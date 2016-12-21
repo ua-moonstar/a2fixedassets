@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!-- Входящий счет -->
+<template>
+	<document>
+    <date set="today">
+      <validation>
+        <rule cond="blank" type="error" msg="@ERR_emptydate" descr="@ERR_selectdate"/>
+      </validation>
+    </date>
+		<mycompany kind="COMP;CFIL" set="main" treemode="1">
+			<validation>
+				<rule cond="blank" type="error" msg="Не указан покупатель" descr="Выберите покупателя"/>
+			</validation>
+		</mycompany>
+		<agent kind="SUPL">
+			<validation>
+				<rule cond="blank" type="error" msg="Не указан поставщик" descr="Выберите поставщика"/>
+			</validation>
+		</agent>
+    <contract set="main"/>
+    <sno>
+      <validation>
+        <rule cond="blank" type="error" msg="Не указан номер документа" descr="Введите номер документа"/>
+      </validation>
+    </sno>
+	</document>
+  <row>
+    <entity kind="GOOD;SEMI;MATR;MSEM;LCST" treemode="1">
+    </entity>
+    <qty set="value" setvalue="pack">
+      <validation>
+        <rule cond="blank" type="error" msg="Не указано количество" descr="Введите количество"/>
+      </validation>
+    </qty>
+		<price autoround="0">
+			<validation>
+				<rule cond="blank" type="error" msg="Не указана цена" descr="Введите цену"/>
+			</validation>
+		</price>
+    <sum autoround="1"/>
+  </row>
+  <apply empty="1" ask="@sureapplydoc">
+  </apply>
+</template>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<uiconfig appextname="FIXEDASSETS" app_db_version="1001" schemaprefix="a2fixedassets">
+	<images>
+	</images>
+	<columnsets>
+    <columns id="COLUMNS_FASS_DOC">
+      <column name="@code" width="75"/>
+      <column name="@document" width="125"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@agent" width="150"/>
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_ENTITY_FASS">
+      <column name="@code" width="70"/>
+      <column name="@name" width="260"/>
+      <column name="@unitshort" width="70"/>
+      <column name="@memo" width="150"/>
+      <column name="@account" width="70"/>
+      <column image="4" width="19"/>
+    </columns>
+	</columnsets>
+	<toolbars>
+    <toolbar id="TOOLBAR_FASS">
+      <tbbutton cmd="add" name="@create"
+								tip="@create+\t(Ins)" descr="@TT_addelement" />
+      <sep />
+      <tbbutton cmd="properties" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+      <sep />
+      <tbbutton cmd="flag" tip="@mark+\t(Space)" descr="Отметить элемент"/>
+    </toolbar>
+  </toolbars>
+	<menus>
+	</menus>
+	<tabsets>
+    <tabs id="ENTITY_FASS_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_FASS_DOC" sortable="1" menu="MENU_DOC"
+                 query="documents_ENTITY_MATR" basefordoc="entity"
+                 dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+	</tabsets>
+	<panes>
+    <pane id="entity_FASS" toolbar="TOOLBAR_FASS" tabs="ENTITY_FASS_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_FASS"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="..\a2fixedassets\dialogs\entity_FASS.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <!--11-->
+    <pane id="entity_ONTA">
+      <replist />
+    </pane>
+    <pane id="entity_LBCO" as="entity_FASS" />
+    <pane id="entity_ONTC" as="entity_FASS" />
+    <pane id="entity_TECO" as="entity_FASS" />
+    <pane id="entity_NLRS" as="entity_FASS" />
+    <pane id="entity_RTCR" as="entity_FASS" />
+    <pane id="entity_RLIM" as="entity_FASS" />
+    <pane id="entity_LVTA" as="entity_FASS" />
+    <!--12-->
+    <pane id="entity_ASNM">
+      <replist />
+    </pane>
+    <pane id="entity_RUNR" as="entity_FASS" />
+    <pane id="entity_RUTP" as="entity_FASS" />
+    <pane id="entity_RTCD" as="entity_FASS" />
+    <pane id="entity_ROIP" as="entity_FASS" />
+    <pane id="entity_CPAR" as="entity_FASS" />
+    <pane id="entity_ORIA" as="entity_FASS" />
+    <!--13-->
+    <pane id="entity_DOFA">
+      <replist />
+    </pane>
+    <pane id="entity_DEFA" as="entity_FASS" />
+    <pane id="entity_DOTA" as="entity_FASS" />
+    <pane id="entity_ADFA" as="entity_FASS" />
+    <pane id="entity_AABA" as="entity_FASS" />
+    <pane id="entity_DOIP" as="entity_FASS" />
+    <!--14-->
+    <pane id="entity_LTFI">
+      <replist />
+    </pane>
+    <pane id="entity_IREM" as="entity_FASS" />
+    <pane id="entity_OIRP" as="entity_FASS" />
+    <pane id="entity_ITUP" as="entity_FASS" />
+    <!--15-->
+    <pane id="entity_CAIN">
+      <replist />
+    </pane>
+    <pane id="entity_CABL" as="entity_FASS" />
+    <pane id="entity_AMPE" as="entity_FASS" />
+    <pane id="entity_AOTA" as="entity_FASS" />
+    <pane id="entity_ACIA" as="entity_FASS" />
+    <pane id="entity_FOBH" as="entity_FASS" />
+    <!-- Счет ОС,НА-->
+    <pane id="template_TIFP" toolbar="TOOLBAR_DOC_WITH_ALL">
+      <doclist columns="COLUMNS_DOC_AS"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_AS" sortable="1" menu="MENU_DOC">
+        <acceltable>
+          <accel key="Ins" cmd="newdocument"/>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+	</panes>
+	<modes>
+	</modes>
+</uiconfig>

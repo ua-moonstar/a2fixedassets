@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<dialog enablenew="1" padding="5" bind="caption" bindto="ent"
+        layout="stack" resizable="1" persist="file" clipchildren="1"
+        enterastab="1" >
+  <object id="ent" kind="entity" getid="current" main="1">
+    <props kind="MATR" template="..\a2fixedassets\elemtemplates\entity_FASS.elemtemplate.xml"/>
+  </object>
+  <gridpanel snap="15" rowheight="16" displaygridlines="0" cellpadding="2">
+    <columns>
+      <column width="73"/>
+      <column width="300"/>
+    </columns>
+    <tr height="202">
+      <td colspan="2">
+        <tabcontrol snap="15">
+          <tab caption="Общие сведения" padding="4">
+            <gridpanel snap="15" rowheight="16" displaygridlines="1" cellpadding="2">
+              <columns>
+                <column width="79" fixed="1"/>
+                <column width="100" />
+                <column width="10" fixed="1"/>
+                <column width="73" fixed="1"/>
+                <column width="100" />
+                <column width="10" fixed="1"/>
+              </columns>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@name+:" align="right" />
+                </td>
+                <td colspan="4">
+                  <editor snap="15" bind="name" bold="1"/>
+                </td>
+                <td cellpadding="0;2;0;2">
+                  <validator bind="name"/>
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@fullname+:" align="right" />
+                </td>
+                <td colspan="4">
+                  <editor snap="15" bind="fullname" bold="1"/>
+                </td>
+                <td cellpadding="0;2;0;2">
+                  <validator bind="fullname"/>
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@article:" align="right"/>
+                </td>
+                <td colspan="1">
+                  <editor snap="15" bind="article" align="right"/>
+                </td>
+                <td cellpadding="0;2;0;2">
+                  <validator bind="article"/>
+                </td>
+                <td />
+                <td>
+                  <checkbox caption="@notused" bind="notactive"/>
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@barcode:" align="right"/>
+                </td>
+                <td colspan="1">
+                  <editor snap="15" bind="barcode" align="right"/>
+                </td>
+                <td cellpadding="0;2;0;2">
+                  <validator bind="barcode"/>
+                </td>
+                <td>
+                  <label snap="15" caption="@sitcode:" align="right"/>
+                </td>
+                <td>
+                  <editor snap="15" bind="sitcode" align="right"/>
+                </td>
+              </tr>
+              <tr fixed="1" height="10">
+                <td></td>
+                <td cellpadding="2;0;2;0">
+                  <hyperlink snap="15" cmd="generatecode:[code=barcode;type=EAN8;base=id;prefix=INV]">
+                    <a>@cmdgenerate</a>
+                  </hyperlink>
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td></td>
+                <td cellpadding="2;0;2;2">
+                  <hyperlink snap="15" cmd="printlabel:[savebefore=1;prefix=200]">
+                    <a>@cmdprint</a>
+                  </hyperlink>
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@unit+:" align="right"/>
+                </td>
+                <td colspan="1">
+                  <selector snap="15" bind="unit" alwidth="150"/>
+                </td>
+                <td />
+                <td>
+                  <label snap="15" caption="@pack:" align="right"/>
+                </td>
+                <td colspan="1">
+                  <editor snap="15" bind="pack" align="right"/>
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@vatlabel:" align="right"/>
+                </td>
+                <td colspan="1">
+                  <selector snap="15" bind="vat" />
+                </td>
+              </tr>
+              <tr fixed="1" height="3"/>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@vendor+:" align="right"/>
+                </td>
+                <td colspan="3">
+                  <selector snap="15" bind="vendor" />
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@supplier+:" align="right"/>
+                </td>
+                <td colspan="3">
+                  <selector snap="15" bind="agent" />
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" caption="@brand+:" align="right"/>
+                </td>
+                <td colspan="3">
+                  <selector snap="15" bind="brand" />
+                </td>
+              </tr>
+              <tr />
+            </gridpanel>
+          </tab>
+          <tab caption="Учетные данные (БУ/НУ)">
+            <gridpanel bindto="pictureobj" snap="15" rowheight="20" cellpadding="2">
+              <columns>
+                <column width="200"/>
+                <column fixed="1" width="50"/>
+              </columns>
+              <tr fixed="1">
+                <td rowspan="2">
+                  <picture snap="15"/>
+                </td>
+                <td>
+                  <button cmd="browse" caption="@cmdbrowse..."/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button cmd="clear:[ask=@suredelelem]" caption="@delete"/>
+                </td>
+              </tr>
+            </gridpanel>
+          </tab>
+          <tab caption="Учетные данные (УУ)" padding="4">
+            <gridpanel snap="15" rowheight="16" cellpadding="2" displaygridlines="1">
+              <columns>
+                <column width="50" fixed="1"/>
+                <column width="80" fixed="1"/>
+                <column width="50" fixed="1"/>
+                <column width="100" />
+              </columns>
+              <tr fixed="1">
+                <td colspan="4">
+                  <title snap="15" caption="Норми запасів"></title>
+                </td>
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" align="right">Мінімум:</label>
+                </td>
+                <td>
+                  <editor snap="15" datatype="double" bind="norm:min" align="right"/>
+                </td>
+                <td>
+                  <label bind="unit" />
+                </td>
+                <td />
+              </tr>
+              <tr fixed="1">
+                <td>
+                  <label snap="15" align="right">Максімум:</label>
+                </td>
+                <td>
+                  <editor snap="15" datatype="double" bind="norm:max" align="right"/>
+                </td>
+                <td>
+                  <label bind="unit" />
+                </td>
+                <td />
+              </tr>
+              <tr />
+            </gridpanel>
+          </tab>
+        </tabcontrol>
+      </td>
+    </tr>
+    <!--memo-->
+    <tr fixed="1" height="28">
+        <td>
+          <label snap="15" caption="@memo+:" align="right" wrap="1"/>
+        </td>
+        <td colspan="4">
+          <editor snap="15" bind="memo" wrap="1"/>
+        </td>
+    </tr>
+  </gridpanel>
+  <buttonpanel bindto="dialog">
+    <button cmd="close:savemain" caption="OK"/>
+    <button cmd="close:cancel" caption="@cancel"/>
+  </buttonpanel>
+</dialog>

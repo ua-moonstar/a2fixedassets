@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<book bindto="rep" bind="name">
+  
+   <interiors>
+      <intr code="1" backcolor="#ecfff4"/>
+      <intr code="2" backcolor="#e0e7e7" border="default"/>
+      <intr code="3" border="default" />
+      <intr code="4" border="default" backcolor="#ffefd5"/>
+      <intr code="5" border="bottom"/>
+    </interiors>
+
+    <fonts>
+      <font code="0" />
+      <font code="1" font-bold="1" font-size="12pt"/>
+		  <font code="2" font-bold="1"/>
+      <font code="3" font-size="8pt"/>
+      <font code="4" font-italic="1" font-size="8pt"/> 
+	  </fonts>
+  
+  	<object id="rep" kind="repquery" main="1" >
+        <props 
+           name="Інвентарний список основних засобів" calctotals="1"
+        />  
+       <events ondrillthrough="on_drill_through" />
+    </object>
+
+  <filterbar>
+    <selector label="@agentcomp+:" width="*" bind="prm:1" />
+    <selector label="Место расположения (отдел, цех, участок, линия" width="*" bind="prm:2" />
+    <selector label="Класификационная группа" width="*" bind="prm:3" />
+  </filterbar>
+
+
+  <sheet  bindto="rep"  orientation="portrait">
+
+    <columns>
+      <column width="22mm"/>
+      <column width="22mm"/>
+      <column width="22mm "/>
+      <column width="22mm"/>
+      <column width="22mm"/>
+      <column width="22mm"/>
+      <column width="22mm"/>
+      <column width="22mm"/>
+    </columns>
+    
+    
+    <section keeptogether="1">
+
+      <tr>
+        <td colspan="8" align="right">Типова форма № ОЗ-9</td>
+      </tr>
+      <tr>
+        <td colspan="8" align="right">Затверджена наказом Мінстату</td>
+      </tr>
+      <tr>
+        <td colspan="8" align="right">України від 29.12.95 р. №352</td>
+      </tr>
+
+      <tr>
+        <td align="center" bind="mycompany" colspan="2" font="2" intr="5"/>
+      </tr>
+      <tr>
+        <td align="center" colspan="2" >(підприємство, організація)</td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td align="center" colspan="1">@codeCOMP+:</td>
+        <td align="center" bind="mycompany" colspan="1" intr="3"/>
+        <td align="center" colspan="2">Код по УКУД</td>
+        <td align="center" bind="mycompany" colspan="1" intr="3"/>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="8" align="center" bind="name" font="1"></td>
+      </tr>
+      <tr>
+        <td colspan="8" align="center" font="3">(за місцем їх знаходження, експлуатації)</td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td align="center" bind="" colspan="8" font="1" intr="5"/>
+      </tr>
+      <tr>
+        <td align="center" colspan="8" font="4">(відділ, цех, дільниця, лінія)</td>
+      </tr>
+
+      <tr>
+        <td align="center" bind="" colspan="8" font="1" intr="5"/>
+      </tr>
+      <tr>
+        <td align="center" colspan="8" font="4">(найменування класифікаційної групи)</td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      
+
+      <tr intr="2" align="center" font="3">
+        <td colspan="2" wrap="1">Інвентарна картка або запис в\n інвентарній книзі</td>
+        <td rowspan="3" wrap="1">Інвентарний\n номер</td>
+        <td rowspan="3" wrap="1">Повне\nнайменування\n об'єкта</td>
+        <td rowspan="3" wrap="1">Первісна\n (балансова)\n вартість</td>
+        <td colspan="3" wrap="1">Вибуття (переміщення)</td>
+      </tr>
+      <tr intr="2" align="center" font="3">
+        <td rowspan="2" wrap="1">номер</td>
+        <td rowspan="2" wrap="1">дата</td>
+        <td colspan="2" wrap="1">документа</td>
+        <td rowspan="2" wrap="1">причина вибуття\n(переміщення)</td>
+      </tr>
+        <tr intr="2" align="center" font="3">
+        <td rowspan="1" wrap="1">дата</td>  
+        <td rowspan="1" wrap="1">номер</td>
+      </tr>
+      <tr intr="2" align="center" font="3">
+        <td colspan="1">1</td>
+        <td colspan="1">2</td>
+        <td colspan="1">3</td>
+        <td colspan="1">4</td>
+        <td colspan="1">5</td>
+        <td colspan="1">6</td>
+        <td colspan="1">7</td>
+        <td colspan="1">8</td>
+      </tr>
+      <tr intr="3" align="center" font="3">
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+      </tr>
+
+    </section>
+
+  </sheet>
+</book>

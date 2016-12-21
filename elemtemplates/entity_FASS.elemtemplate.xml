@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<elemtemplate strict="1">
+  <self>
+    <name required="1">
+      <validation>
+        <rule cond="blank" type="error" msg="@ERR_emptyname" 
+              descr="@ERR_entername" />
+      </validation>
+    </name>
+    <unit required="1">
+      <validation>
+        <rule cond="blank" type="error" msg="Не указана единица измерения"
+              descr="Введите единицу измерения" />
+      </validation>
+    </unit>
+    <barcode>
+      <validation>
+        <rule cond="unique" type="error" msg="Повторяющийся штрих-код"
+						descr="Введите другой штрих-код" />
+      </validation>
+    </barcode>
+    <article>
+      <validation>
+        <rule cond="unique" type="error" msg="Повторяющийся артикул"
+						descr="Введите другой артикул" />
+      </validation>
+    </article>
+    <agent kind="SUPL">
+    </agent>
+  </self>
+</elemtemplate>
+

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<form bindto="doc" bind="caption">
+  <style src ="forms\stdstyle.style.xml" />
+	<object id="doc" kind="document" getid="current" main="1">
+		<props autogrow="1" autorecalc="1"/>
+	</object>
+	<taskspane caption="@tasks">
+		<group caption="Шаблон">
+			<label expr="{templname}" image="43"/>
+      <label expr="Код документа: {id}" image="43"/>
+    </group>
+    <group caption="Оплата" bindto="childrendocsobj:[kind=PAYB]">
+      <list />
+      <task bind="action:1" image="1" cmd="doaction:1"/>
+      <task bind="action:2" image="1" cmd="doaction:2"/>
+      <task bind="action:3" image="1" cmd="doaction:3"/>
+    </group>
+    <group caption="Оприбуткування" bindto="childrendocsobj:[kind=WBIN]">
+      <list />
+      <task bind="action:1" image="1" cmd="doaction:1"/>
+      <task bind="action:2" image="1" cmd="doaction:2"/>
+      <task bind="action:3" image="1" cmd="doaction:3"/>
+    </group>
+    <group caption="@close" bottom="1">
+			<task caption="@closedocument" image="29" bindto="form" cmd="close"/>
+		</group>
+	</taskspane>
+	<toolbar src="forms\stdtoolbar.toolbar.xml" />
+  <page caption="Коротка форма" id="p1" margin="0.5in; 0.2in; 0.2in; 0.8in" padding="2" paper="A4" orientation="portrait">
+    <section id="header" visible="1">
+      <table bindto="doc">
+        <columns>
+          <column width="2.0in"/>
+          <column width="1.5in"/>
+          <column width="0.4in"/>
+          <column width="1.6in"/>
+        </columns>
+        <tbody>
+          <tr align="center">
+            <td style="title" rowspan="2" align="left">Вхідний рахунок №</td>
+            <td type="edit" style="editable" border="default" bind="sno"/>
+            <td align="right">@by</td>
+            <td type="date" style="editable" border="default" bind="date">[date]</td>
+          </tr>
+          <tr height="0.1in">
+            <td colspan="3"/>
+          </tr>
+        </tbody>
+      </table>
+      <table bindto="doc">
+        <columns>
+          <column width="25.4"/>
+          <column width="*"/>
+          <column width="16px"/>
+          <column width="1.9in"/>
+        </columns>
+        <tbody>
+          <tr>
+            <td align="right">@supplier:</td>
+            <td type="selector"
+								bind="agent" style="editable" wrap="1"
+								border="default" />
+            <td mark="1"></td>
+            <td style="small" bindto="agentobj" bind="warning:novatpayer"></td>
+          </tr>
+          <tr>
+            <td align="right">@contract:</td>
+            <td type="selector"
+								bind="contract" style="editable" wrap="1"
+								border="default" />
+            <td mark="1"></td>
+            <td></td>
+          </tr>
+          <tr height="0.1in"/>
+          <tr>
+            <td align="right">Отримувач:</td>
+            <td type="selector" bind="mycompany" style="editable" wrap="1" border="default"></td>
+            <td />
+            <td style="small" bindto="mycompanyobj" bind="warning:novatpayer"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="body" margin="-16px; 0.1in; -16px; 0.1in">
+      <table id="tbMain_p1" repeatable="1" bindto="doc" border="default" highlight="row">
+        <columns>
+          <column width="16px" mark="1"/>
+          <column width="0.3in"/>
+          <column width="*"/>
+          <column width="0.45in"/>
+          <column width="0.63in"/>
+          <column width="0.63in"/>
+          <column width="0.63in"/>
+          <column width="0.45in"/>
+          <column width="20px" print="none" visible="{notapplied}"/>
+          <column width="16px" mark="1"/>
+        </columns>
+        <tpageheader align="center" style="header">
+          <tr>
+            <td rowspan="2" border="none" style="normal"/>
+            <td rowspan="2" wrap="1">@ordernowrap</td>
+            <td>@materialassets</td>
+            <td wrap="1" rowspan="2">@unitshortwrap</td>
+            <td rowspan="2">@qtyshort</td>
+            <td rowspan="2">@price</td>
+            <td rowspan="2">@sum</td>
+            <td rowspan="2" wrap="1">@accountwrap</td>
+            <td rowspan="2" type="checkbox" bind="checkedall" style="normal" border="none"></td>
+            <td border="none" style="normal"/>
+          </tr>
+          <tr align="left">
+            <td align="center">@name</td>
+          </tr>
+        </tpageheader>
+        <tbody bind="rows" align="right">
+          <tr id="marking" bindto="row" style="editable">
+            <td border="none" style="normal" mark="1"/>
+            <td align="center" bind="rowno" style="header" autowidth="1"/>
+            <td wrap="1" type="selector" align="left" bind="entity" alwidth="4in"/>
+            <td bind="unit" style="normal" align="center" autowidth="1"/>
+            <td bind="qty" type="numedit" autowidth="1"/>
+            <td type="cyedit" bind="price" autowidth="1" format="#.00"/>
+            <td type="cyedit" bind="sum:total" autowidth="1"/>
+            <td type="label" bindto="entityobj" bind="acccode" align="right" style="readonly"></td>
+            <td type="checkbox" bind="checked" style="normal" border="none"></td>
+            <td border="none" style="normal" bind="mark:2" mark="1"/>
+          </tr>
+        </tbody>
+        <tfooter bindto="doc" align="right">
+          <tr>
+            <td border="none" />
+            <td colspan="4" rowspan="3" align="left" style="header">@total</td>
+            <td style="header">Итого:</td>
+            <td colspan="2" style="total" bind="sum:novat" ></td>
+          </tr>
+          <tr>
+            <td colspan="4" border="none"/>
+            <td style="header">@vat:</td>
+            <td colspan="2" style="total" bind="sum:vat"/>
+          </tr>
+          <tr>
+            <td colspan="4" border="none"/>
+            <td style="header">Всього:</td>
+            <td colspan="2" style="total" bind="sum:total"/>
+          </tr>
+        </tfooter>
+      </table>
+    </section>
+    <section id="footer">
+      <table bindto="doc">
+        <columns>
+          <column width="17"/>
+          <column width="170"/>
+        </columns>
+        <tbody>
+          <tr>
+            <td valign="top">@memo:</td>
+            <td style="editable" type="edit" border="default" bind="memo" wrap="1"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </page>
+  <page caption="Повна форма" id="p2" margin="0.5in; 0.2in; 0.2in; 0.8in" padding="2" paper="A4" orientation="landscape">
+    <section id="header" visible="1">
+      <table bindto="doc">
+        <columns>
+          <column width="2.0in"/>
+          <column width="1.5in"/>
+          <column width="0.4in"/>
+          <column width="1.6in"/>
+        </columns>
+        <tbody>
+          <tr align="center">
+            <td style="title" rowspan="2" align="left">Вхідний рахунок №</td>
+            <td type="edit" style="editable" border="default" bind="sno"/>
+            <td align="right">@by</td>
+            <td type="date" style="editable" border="default" bind="date">[date]</td>
+          </tr>
+          <tr height="0.1in">
+            <td colspan="3"/>
+          </tr>
+        </tbody>
+      </table>
+      <table bindto="doc">
+        <columns>
+          <column width="25.4"/>
+          <column width="*"/>
+          <column width="16px"/>
+          <column width="5.3in"/>
+        </columns>
+        <tbody>
+          <tr>
+            <td align="right">@supplier:</td>
+            <td type="selector"
+								bind="agent" style="editable" wrap="1"
+								border="default" />
+            <td mark="1"></td>
+            <td style="small" bindto="agentobj" bind="warning:novatpayer"></td>
+          </tr>
+          <tr>
+            <td align="right">@contract:</td>
+            <td type="selector"
+								bind="contract" style="editable" wrap="1"
+								border="default" />
+            <td mark="1"></td>
+            <td></td>
+          </tr>
+          <tr height="0.1in"/>
+          <tr>
+            <td align="right">Отримувач:</td>
+            <td type="selector" bind="mycompany" style="editable" wrap="1" border="default"></td>
+            <td />
+            <td style="small" bindto="mycompanyobj" bind="warning:novatpayer"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="body" margin="-16px; 0.1in; -16px; 0.1in">
+      <table id="tbMain_p2" repeatable="1" bindto="doc" border="default" highlight="row">
+        <columns>
+          <column width="16px" mark="1"/>
+          <column width="0.3in"/>
+          <column width="0.5in"/>
+          <column width="0.7in"/>
+          <column width="0.82in"/>
+          <column width="*"/>
+          <column width="0.4in"/>
+          <column width="0.4in"/>
+          <column width="0.45in"/>
+          <column width="0.45in"/>
+          <column width="0.45in"/>
+          <column width="0.63in"/>
+          <column width="0.63in"/>
+          <column width="0.63in"/>
+          <column width="0.63in"/>
+          <column width="0.45in"/>
+          <column width="20px" print="none" visible="{notapplied}"/>
+          <column width="16px" mark="1"/>
+        </columns>
+        <tpageheader align="center" style="header">
+          <tr>
+            <td rowspan="2" border="none" style="normal"/>
+            <td rowspan="2" wrap="1">@ordernowrap</td>
+            <td colspan="4">@materialassets</td>
+            <td wrap="1" rowspan="2">@unitshortwrap</td>
+            <td rowspan="2">@vat</td>
+            <td colspan="3">@qty</td>
+            <td colspan="2">@price</td>
+            <td colspan="2">@sum</td>
+            <td rowspan="2" wrap="1">@accountwrap</td>
+            <td rowspan="2" type="checkbox" bind="checkedall" style="normal" border="none"></td>
+            <td border="none" style="normal"/>
+          </tr>
+          <tr align="left">
+            <td>@code</td>
+            <td>@article</td>
+            <td>@barcode</td>
+            <td align="center">@name</td>
+            <td>@qtyshort</td>
+            <td>В уп.</td>
+            <td>Упак.</td>
+            <td>без ПДВ</td>
+            <td>з ПДВ</td>
+            <td wrap="0">без ПДВ</td>
+            <td wrap="0">з ПДВ</td>
+          </tr>
+        </tpageheader>
+        <tbody bind="rows" align="right">
+          <tr id="marking" bindto="row" style="editable">
+            <td border="none" style="normal" mark="1"/>
+            <td align="center" bind="rowno" style="header" autowidth="1"/>
+            <td wrap="1" type="edit" align="right" bind="entcode:id" autowidth="1"/>
+            <td wrap="1" type="edit" align="right" bind="entcode:article" autowidth="1"/>
+            <td wrap="1" type="edit" align="right" bind="entcode:barcode" autowidth="1"/>
+            <td wrap="1" type="selector" align="left" bind="entity" alwidth="4in"/>
+            <td bind="unit" style="normal" align="center" autowidth="1"/>
+            <td bind="vat:[display=percent]" type="label" align="center" autowidth="1" style="readonly"/>
+            <td bind="qty" type="numedit" autowidth="1"/>
+            <td bind="pack" type="numedit" autowidth="1"/>
+            <td bind="pqty" type="numedit" autowidth="1" />
+            <td type="cyedit" bind="price:novat" autowidth="1" format="#.00"/>
+            <td type="cyedit" bind="price" autowidth="1" format="#.00"/>
+            <td type="cyedit" bind="sum:novat" autowidth="1"/>
+            <td type="cyedit" bind="sum:total" autowidth="1"/>
+            <td type="label" bindto="entityobj" bind="acccode" align="right" style="readonly"></td>
+            <td type="checkbox" bind="checked" style="normal" border="none"></td>
+            <td border="none" style="normal" bind="mark:2" mark="1"/>
+          </tr>
+        </tbody>
+        <tfooter bindto="doc" align="right">
+          <tr>
+            <td border="none" />
+            <td colspan="7" rowspan="3" align="left" style="header">@total</td>
+            <td bind="sumrows:qty" style="total" format="" autowidth="1"></td>
+            <td style="header"></td>
+            <td bind="sumrows:pqty" style="total"></td>
+            <td style="header" colspan="3">Загалом:</td>
+            <td colspan="2" style="total" bind="sum:novat" ></td>
+          </tr>
+          <tr>
+            <td colspan="8" border="none"/>
+            <td colspan="3" style="header"></td>
+            <td colspan="3" style="header">@vat:</td>
+            <td colspan="2" style="total" bind="sum:vat"/>
+          </tr>
+          <tr>
+            <td colspan="8" border="none"/>
+            <td colspan="3" style="header"></td>
+            <td colspan="3" style="header">Всього:</td>
+            <td colspan="2" style="total" bind="sum:total"/>
+          </tr>
+        </tfooter>
+      </table>
+    </section>
+    <section id="footer">
+      <table bindto="doc">
+        <columns>
+          <column width="25.4"/>
+          <column width="*"/>
+        </columns>
+        <tbody>
+          <tr>
+            <td valign="top">@memo:</td>
+            <td style="editable" type="edit" border="default" bind="memo" wrap="1"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </page>
+</form>

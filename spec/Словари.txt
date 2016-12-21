@@ -1,0 +1,87 @@
+ACCOUNT:
+	(1000115, 1000011, N'115', null, N'A', N'SUE ', N'@acc115', null),
+
+        (1000121, 1000012, N'121', null, N'A', N'SUE ', N'@acc121', null),
+	(1000122, 1000012, N'122', null, N'A', N'SUE ', N'@acc122', null),
+	(1000123, 1000012, N'123', null, N'A', N'SUE ', N'@acc123', null),
+	(1000124, 1000012, N'124', null, N'A', N'SUE ', N'@acc124', null),
+	(1000125, 1000012, N'125', null, N'A', N'SUE ', N'@acc125', null),
+	(1000127, 1000012, N'127', null, N'A', N'SUE ', N'@acc127', null),	
+
+	(1000131, 1000013, N'131', null, N'P', N'SUE ', N'@acc131', null),
+	(1000132, 1000013, N'132', null, N'P', N'SUE ', N'@acc132', null),
+	(1000133, 1000013, N'133', null, N'P', N'SUE ', N'@acc133', null),
+	(1000134, 1000013, N'134', null, N'P', N'SUE ', N'@acc134', null),	
+	(1000135, 1000013, N'135', null, N'P', N'SUE ', N'@acc135', null),	
+
+	(1000141, 1000014, N'141', null, N'A', N'SUE ', N'@acc141', null),
+	(1000142, 1000014, N'142', null, N'A', N'SUE ', N'@acc142', null),
+	(1000143, 1000014, N'143', null, N'A', N'SUE ', N'@acc143', null),			
+
+Словари:
+Ru
+@acc115=Инвентарная тара
+
+@acc121=Права пользования природными ресурсами
+@acc122=Права пользования имуществом
+@acc123=Права на коммерческие обозначения
+@acc124=Права на объекты промышленной собственности
+@acc125=Авторское право и смежные с ним права
+@acc127=Прочие нематериальные активы
+
+@acc131=Износ основных средств
+@acc132=Износ прочих необоротных материальных активов
+@acc133=Накопленная амортизация необоротных активов
+@acc134=Накопленная амортизация долгосрочных биологических активов
+@acc135=Износ инвестиционной недвижимости
+
+@acc141=Инвестиции связанным сторонам по методу участия в капитале
+@acc142=Прочие инвестиции связанным сторонам
+@acc143=Инвестиции несвязанным сторонам
+
+@fixedassets=Основные средства
+
+Ua
+@acc115=Інвентарна тара
+
+@acc121=Права користування природними ресурсами
+@acc122=Права користування майном
+@acc123=Права на комерційні позначення
+@acc124=Права на об'єкти промислової власності
+@acc125=Авторське право та суміжні з ним права
+@acc127=Інші нематеріальні активи
+
+@acc131=Знос основних засобів
+@acc132=Знос інших необоротних матеріальних активів
+@acc133=Накопичена амортизація необоротних активів
+@acc134=Накопичена амортизація довгострокових біологічних активів
+@acc135=Знос інвестиційної нерухомості
+
+@acc141=Інвестиції пов'язаним сторонам за методом участі в капіталі
+@acc142=Інші інвестиції пов'язаним сторонам
+@acc143=Інвестиції непов'язаним сторонам
+
+@fixedassets=Основні засоби
+
+En
+@acc115=Returnable container
+
+@acc121=Rights to use natural resources
+@acc122=Rights to use the property
+@acc123=Rights to commercial designations
+@acc124=Rights of industrial property
+@acc125=Copyright and allied rights
+@acc127=Other intangible assets
+
+@acc131=Depreciation of fixed assets
+@acc132=Depreciation of other tangible assets
+@acc133=Accumulated depreciation of fixed assets
+@acc134=Accumulated amortization of long-term biological assets
+@acc135=Depreciation of investment property
+
+@acc141=Investments related parties for using the equity method
+@acc142=Other investments to related parties
+@acc143=Investments to unrelated parties
+
+@fixedassets=Fixed assets
+

@@ -1,0 +1,1831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+Copyright © 2008-2016 А.А. Кухтин 
+Файл пользовательского интерфейса А2:СТАРТ
+07-dec-2016
+-->
+<uiconfig schemaprefix="a2start" helpfile="app_help.chm" helproot="html/default.htm" localhelp="1"
+          app_version="2165" db_version="1710" app_db_version="1711"
+          showtaskpad="1" profile="a2start">
+  <!--
+  <include src="..\a2jewelry\jewelry.uiconfig.xml" appparam="JEWELRY" />
+  -->
+  <include src="..\a2orderprod\orderprod.uiconfig.xml" appparam="ORDERPROD" />
+  <!--
+  <include src="..\a2specprod\specprod.uiconfig.xml" appparam="SPECPROD" />
+  -->
+  <include src="..\a2fixedassets\fixedassets.uiconfig.xml" appparam="FIXEDASSETS" />
+  <images standard="1">
+    <imageset base="xtra">
+      <image key="CITY" value="141;141;141"/>
+      <image key="REGN" value="135;135;135"/>
+    </imageset>
+  </images>
+	<modes>
+		<mode id="mycompany" name="@mycompany" image="8" typesuffix="1">
+			<tree base="mycompany" href="modes\mycompany.tree.xml"/>
+		</mode>
+		<mode id="operations" name="@operations" image="6" typesuffix="1">
+      <tree base="template" menu="TEMPLATE_TREE">
+        <acceltable>
+        </acceltable>
+      </tree>
+		</mode>
+    <mode name="@agents" image="1" toolbar="AGENT_TREE" id="agent">
+      <tree base="agent" enabledrag="1" enabledrop="1" menu="AGENT_TREE">
+        <acceltable>
+          <accel key="Ins" cmd="newtreeitem"/>
+          <accel key="F2" cmd="renametreeitem"/>
+          <accel key="Del" cmd="deletetreeitem:[ask=@suredelelem]"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </tree>
+    </mode>
+    <mode name="@entities" image="9" toolbar="ENTITY_TREE" id="entity">
+      <tree base="entity" enabledrag="1" enabledrop="1" menu="ENTITY_TREE">
+        <acceltable>
+          <accel key="Ins" cmd="newtreeitem"/>
+          <accel key="F2" cmd="renametreeitem"/>
+          <accel key="Del" cmd="deletetreeitem:[ask=@suredelelem]"/>
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Alt+Enter" cmd="propstreeitem:[file=dialogs\entity_tree_folder.dialog.xml]" />
+        </acceltable>
+      </tree>
+    </mode>
+    <mode id="reports" name="@reports" image="4">
+			<tree base="report" href="modes\reports.tree.xml"/>
+		</mode>
+		<mode id="service" name="@service" image="5" admin="0">
+			<tree base="service" href="modes\service.tree.xml" />
+		</mode>
+	</modes>
+  <filemapper>
+  </filemapper>
+  <querymapper>
+    <!-- AGENTS -->
+    <map query="a2start.agent_DEL_groups" mapto="a2start.agent_KIND_groups"/>
+    <map query="a2start.agent_FLG_groups" mapto="a2start.agent_KIND_groups"/>
+    <map query="a2start.agent_tree_move" mapto="a2agent.agent_tree_move"/>
+    <map query="a2start.agent_tree_new" mapto="a2agent.agent_tree_new"/>
+    <map query="a2start.agent_tree_rename" mapto="a2agent.agent_tree_rename"/>
+    <map query="a2start.agent_tree_delete" mapto="a2agent.agent_tree_delete"/>
+    <map query="a2start.agent_FISC_move" mapto="a2agent.agent_tree_move"/>
+    <map query="a2start.agent_SUPL_move" mapto="a2agent.agent_tree_move"/>
+    <map query="a2start.agent_CUST_move" mapto="a2agent.agent_tree_move"/>
+    <map query="a2start.agent_BANK_move" mapto="a2agent.agent_tree_move"/>
+    <map query="a2start.agent_OTHR_move" mapto="a2agent.agent_tree_move"/>
+    <map query="a2start.agent_CNTR_move" mapto="a2agent.agent_tree_move"/>
+    <!-- ENTITIES -->
+    <map query="a2start.entity_flag" mapto="a2entity.entity_flag"/>
+    <map query="a2start.entity_DEL_groups" mapto="a2start.entity_KIND_groups"/>
+    <map query="a2start.entity_FLG_groups" mapto="a2start.entity_KIND_groups"/>
+    <map query="a2start.entity_tree_new" mapto="a2entity.entity_tree_new"/>
+    <map query="a2start.entity_tree_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_tree_delete" mapto="a2entity.entity_delete"/>
+    <map query="a2start.entity_tree_rename" mapto="a2entity.entity_tree_rename"/>
+    <map query="a2start.entity_PROD_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_LCST_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_MATR_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_SEMI_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_GOOD_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_PACK_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_BILD_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_PART_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.entity_FOLDER_move" mapto="a2entity.entity_tree_move"/>
+    <map query="a2start.mycompany_MENU_sort" mapto="a2entity.entity_class_sort"/>
+    <!-- TEMPLATES -->
+    <map query="a2start.template_getsysid" mapto="a2doc.template_getsysid"/>
+    <!-- START -->
+    <map query="a2start.documents_EMPL_TB_item" mapto="a2start.documents_EMPL_HR_item"/>
+    <map query="a2start.documents_DEPT_HR_item" mapto="a2start.documents_EMPL_HR_item"/>
+    <map query="a2start.documents_DEPT_TB_item" mapto="a2start.documents_EMPL_HR_item"/>
+    <map query="a2start.documents_DEPT_PY_item" mapto="a2start.documents_EMPL_PY_item"/>
+    <map query="a2start.contracts_CTAG_delete" mapto="a2doc.contract_delete"/>
+    <map query="a2start.contracts_CTOP_delete" mapto="a2doc.contract_delete"/>
+    <map query="a2start.contracts_CTPY_delete" mapto="a2doc.contract_delete"/>
+    <map query="a2start.contracts_BANK_delete" mapto="a2doc.contract_delete"/>
+    <map query="a2start.contracts_GENR_delete" mapto="a2doc.contract_delete"/>
+  </querymapper>
+	<columnsets>
+    <columns id="COLUMNS_PERS">
+      <column name="@code" width="60" align="right"/>
+      <column name="@fio" width="260"/>
+      <column name="@ssn" align="right" width="100"/>
+      <column name="@memo" width="200"/>
+    </columns>
+    <columns id="COLUMNS_EMPL">
+      <column name="@code" width="70" align="right" />
+      <column name="@fio" width="150"/>
+      <column name="@ssn" align="right" width="80"/>
+      <column name="@tabnoshort" align="right" width="50"/>
+      <column name="@cardnoshort" align="right" width="70"/>
+      <column name="@agentdep" width="100"/>
+      <column name="@position" width="100"/>
+      <column name="@hiredate" align="center" width="100"/>
+      <column name="@memo" width="200"/>
+    </columns>
+    <columns id="COLUMNS_EMRL">
+      <column name="@code" width="50" align="right"/>
+      <column name="@fio" width="150"/>
+      <column name="@ssn" align="right" width="80"/>
+      <column name="@tabnoshort" align="right" width="50"/>
+      <column name="@agentdep" width="100"/>
+      <column name="@position" width="100"/>
+      <column name="@hiredate" align="center" width="100"/>
+      <column name="@releasedate" align="center" width="100"/>
+      <column name="@reason" width="100"/>
+      <column name="@memo" width="200"/>
+    </columns>
+    <columns id="COLUMNS_EMCT">
+      <!-- Колонки для работающих по ГПХ-->
+      <column name="@code" width="50" align="right"/>
+      <column name="@fio" width="150"/>
+      <column name="@ssn" align="right" width="80"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@date" align="center" width="100"/>
+      <column name="Предмет договора" width="200"/>
+    </columns>
+    <columns id="COLUMNS_COMP">
+      <column name="@name" width="260"/>
+      <column name="@codeCOMP" align="right" width="100"/>
+      <column name="@memo" width="200"/>
+      <column name="@code" width="70" align="right"/>
+    </columns>
+    <columns id="COLUMNS_DEPT">
+      <column name="@code" width="70" align="right"/>
+      <column name="@name" width="260"/>
+      <column name="@codeCOMP" align="right" width="100"/>
+      <column name="@memo" width="200"/>
+    </columns>
+    <columns id="COLUMNS_MENU">
+      <column name="@name" width="260"/>
+      <column name="@entity" width="100"/>
+      <column name="@memo" width="200"/>
+      <column name="@code" width="70" align="right"/>
+    </columns>
+    <columns id="COLUMNS_DISCOUNT_CARDS">
+      <column name="@code" width="70"/>
+      <column name="Код карты" width="120"/>
+      <column name="Вид карты" width="120"/>
+      <column name="Клиент" width="200"/>
+      <column name="@phone" width="100"/>
+      <column name="@memo" width="250"/>
+      <column name="@sum" width="100" align="right"/>
+    </columns>    
+    <columns id="COLUMNS_BANK">
+      <column name="@code" width="70"/>
+      <column name="@codeMFO" width="80"/>
+      <column name="@name" width="180"/>
+      <column name="@codeCOMP" align="right" width="150"/>
+      <column name="@memo" width="130"/>
+      <column image="4" width="19"/>
+    </columns>
+    <columns id="COLUMNS_FISC">
+      <column name="@code" width="70"/>
+      <column name="@name" width="260"/>
+      <column name="@codeCOMP" align="right" width="150"/>
+      <column name="@memo" width="130"/>
+      <column image="4" width="19"/>
+    </columns>
+    <columns id="COLUMNS_AGENT">
+      <column name="@code" width="70"/>
+      <column name="@name" width="250"/>
+      <column name="@memo" width="250"/>
+    </columns>
+    <columns id="COLUMNS_AGENT_GENERAL">
+      <column name="@code" width="70"/>
+      <column name="@name" width="260"/>
+      <column name="@memo" width="250"/>
+    </columns>
+    <columns id="COLUMNS_ENTITY_GOOD">
+      <column name="@code" width="70"/>
+      <column name="@name" width="260"/>
+      <column name="@article" width="80" align="right"/>
+      <column name="@barcode" width="100" align="right"/>
+      <column name="@unitshort" width="70"/>
+      <column name="@memo" width="150"/>
+      <column name="@account" width="70"/>
+      <column image="4" width="19"/>
+    </columns>
+    <columns id="COLUMNS_ENTITY_STD">
+      <column name="@code" width="70"/>
+      <column name="@name" width="260"/>
+      <column name="@article" width="80" align="right"/>
+      <column name="@unitshort" width="70"/>
+      <column name="@memo" width="150"/>
+      <column name="@account" width="70"/>
+    </columns>
+    <columns id="COLUMNS_CONTRACT">
+      <column name="@code" width="70"/>
+      <column name="@name" width="260"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@date" align="center" width="120"/>
+      <column name="@agent" align="left" width="200"/>
+      <column name="@memo" align="left" width="200"/>
+    </columns>
+    <columns id="DOC_COLUMNS_UN">
+      <column name="@code" width="70"/>
+      <column name="@date" width="70"/>
+      <column name="@document" width="115"/>
+      <column name="@num" align="right" width="100"/>
+      <column name="@agent" width="200"/>
+      <column name="@sum" width="65" align="right"/>
+      <column name="@memo" width="200" align="left"/>
+    </columns>
+    <columns id="COLUMNS_DOC">
+      <column name="@code" width="80"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@period" width="85" align="center"/>
+      <column name="@num" align="right" width="70" datatype="strnumber"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@agentdep" width="150"/> <!-- подразделение -->
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_DOC_AS">
+      <column name="@code" width="80"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70" datatype="strnumber"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@agent" width="170"/> <!-- корреспондент -->
+      <column name="@agentwarehouse" width="100" />
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_DOC_RCPT">
+      <column name="@code" width="70"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@entity" width="190"/>
+      <column name="Действует с" width="75" align="center"/>
+      <!-- подразделение -->
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_DOC_PROD">
+      <!-- Акт производства-->
+      <column name="@code" width="70"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@entity" width="190"/>
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_DOC_RORD">
+      <column name="@code" width="70"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@agentcpos" width="190"/>
+      <column name="Z-отчет" width="75" align="right"/>
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_DOCACC">
+      <column name="@code" width="70"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_DOC_STANDARD">
+      <column name="@code" width="70"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_ENTITY_DOC">
+      <column name="@code" width="75"/>
+      <column name="@document" width="125"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@agent" width="150"/>
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_ENTITY_RECEIPT">
+      <column name="@code" width="75"/>
+      <column name="@document" width="125"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="Дійсно з" align="center" width="80"/>
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_ENTITY_MART_RECIPES">
+      <column name="@entity" width="200"/>
+      <column name="@qty" align="right" width="70"/>
+      <column name="№ рец." width="75"/>
+      <column name="Дійсно з" width="70" align="center"/>
+    </columns>
+    <columns id="COLUMNS_HR_WITH_DOC">
+      <column name="@code" width="85"/>
+      <column name="@document" width="150"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@agentdep" width="150"/> <!-- подразделение -->
+      <column name="@agentempl" width="110"/> <!-- сотрудник -->
+      <column name="@position" width="100" /><!-- должность-->
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_ACC_WITH_DOC">
+      <column name="@code" width="85"/>
+      <column name="@document" width="150"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="Откуда" width="150"/>
+      <column name="Куда" width="110"/>
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_HR_WITH_DOC_DEP">
+      <column name="@code" width="70"/>
+      <column name="@document" width="150"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@period" width="85" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@sum" align="right" width="70"/>
+      <column name="@agentdep" width="150"/> <!-- подразделение -->
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_HR">
+      <column name="@code" width="70"/>
+      <column name="@date" width="70" align="center"/>
+      <column name="@num" align="right" width="70"/>
+      <column name="@agentdep" width="150"/><!-- подразделение -->
+      <column name="@agentempl" width="110"/><!-- сотрудник -->
+      <column name="@position" width="100" /><!-- должность-->
+      <column name="@memo" width="200" />
+    </columns>
+    <columns id="COLUMNS_BANKACC">
+      <column name="@code" width="60"/>
+      <column name="@account" width="200"/>
+      <column name="@num" align="right" width="90"/>
+      <column name="@bank" width="150" />
+      <column name="@codeMFO" align="right" width="58"/>
+      <column name="@currency" width="70"/>
+      <column name="Баланс%" width="70" align="right" datatype="money"/>
+    </columns>
+    <columns id="DOCCOLUMNS_BANKACC">
+      <column name="@date" width="120"/>
+      <column name="@document"/>
+      <column name="@num" align="right" width="60"/>
+      <column name="@account" width="110"/>
+      <column name="@expense" width="65" align="right"/>
+      <column name="@incoming" width="65" align="right"/>
+      <column name="@memo" width="140"/>
+    </columns>
+  </columnsets>
+	<toolbars>
+    <!-- Дерево объектов учета -->
+    <toolbar id="ENTITY_TREE">
+      <tbbutton cmd="newtreeitem" name="@create" tip="@create+\t(Ins)" descr="@TT_addelement"/>
+      <tbbutton cmd="renametreeitem" tip="@rename+\t(F2)" descr="@TT_rename" />
+      <tbbutton cmd="propstreeitem:[file=dialogs\entity_tree_folder.dialog.xml]" tip="@properties+\t(Alt+Enter)" descr="@TT_properties" />
+      <sep />
+      <tbbutton cmd="find" tip="@find+\t(Ctrl+F)" descr="@TT_find" />
+      <sep />
+      <tbbutton cmd="deletetreeitem:[ask=@suredelelem]" tip="@delete+\t(Del)" descr="@TT_delete" />
+    </toolbar>
+    <!-- Дерево корреспондентов -->
+    <toolbar id="AGENT_TREE">
+      <tbbutton cmd="newtreeitem" name="@create" tip="@create+\t(Ins)" descr="@TT_addelement"/>
+      <tbbutton cmd="renametreeitem" tip="@rename+\t(F2)" descr="@TT_rename" />
+      <sep />
+      <tbbutton cmd="find" tip="@find+\t(Ctrl+F)" descr="@TT_find" />
+      <sep />
+      <tbbutton cmd="deletetreeitem:[ask=@suredelelem]" tip="@delete+\t(Del)" descr="@TT_delete" />
+    </toolbar>
+    <!-- TOOLBAR для физ-лиц -->
+    <toolbar id="TOOLBAR_PERS">
+      <tbbutton cmd="add" name="@create"
+								tip="@create+\t(Ins)" descr="@TT_addelement" />
+      <sep />
+      <tbbutton cmd="properties" name="@properties" 
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" name="@delete" 
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" />
+    </toolbar>
+    <!-- TOOLBAR для сотрудников -->
+    <toolbar id="TOOLBAR_EMPL">
+      <tbcombo name="@agentcomp+:" query="mycompany_combo" width="*" style="list" cmd="refresh" paramno="1"/>
+      <sep />
+      <tbbutton cmd="properties:[file=dialogs\agent_PERS.dialog.xml;fieldnoasid=10]" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" descr="@TT_refresh"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_EMPL_2">
+      <tbbutton cmd="properties:[file=dialogs\agent_PERS.dialog.xml;fieldnoasid=10]" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" descr="@TT_refresh"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOCEMPL">
+        <tbbutton name="@newdocument" image="1">
+          <menuitem name="@hrdocmove" cmd="newdocument:[id=301;base=employer]" />
+          <menuitem name="@hrdocrelease" cmd="newdocument:[id=302;base=employer]" />
+      </tbbutton>
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" descr="@TT_refresh"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOCEMPL_TB">
+      <tbbutton name="@newdocument" image="1">
+        <!--больничный-->
+        <menuitem name="@tbdoctempnojob" cmd="newdocument:[id=501;base=employer]"/>
+        <!--приказ об отпуске-->
+        <menuitem name="@tbdocvacation" cmd="newdocument:[id=502;base=employer]" />
+        <!-- приказ о неоплачиваемом отпуске-->
+        <menuitem name="@tbdocvacationfree" cmd="newdocument:[id=505;base=employer]" />
+        <sep />
+        <!-- командировка -->
+        <menuitem name="@tbdocbsntrip" cmd="newdocument:[id=504;base=employer]" />
+      </tbbutton>
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" descr="@TT_refresh"/>
+    </toolbar>
+    <!-- TOOLBAR для уволенных -->
+    <toolbar id="TOOLBAR_EMRL">
+      <tbcombo name="@agentcomp+:" query="mycompany_combo" width="*" style="list" cmd="refresh" paramno="1"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" />
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" />
+    </toolbar>
+    <!-- TOOLBAR для сотрудников ГПХ -->
+    <toolbar id="TOOLBAR_EMCT">
+      <tbcombo name="@agentcomp+:" query="mycompany_combo" width="*" style="list" cmd="refresh" paramno="1"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" />
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" />
+    </toolbar>
+    <!-- TOOLBAR для договоров ГПХ -->
+    <toolbar id="TOOLBAR_CTAG">
+      <tbbutton name="@create" cmd="add:[file=forms\contract_CTAG.form.xml]" />
+      <tbbutton name="@open" cmd="properties:[file=forms\contract_CTAG.form.xml]"/>
+      <tbbutton cmd="delete:[ask=@suredelelem]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <sep />
+      <tbcombo name="@agentcomp+:" query="mycompany_combo" width="*" style="list" cmd="refresh" paramno="1"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" />
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" />
+    </toolbar>
+    <toolbar id="TOOLBAR_CTPY">
+      <tbbutton name="@create" cmd="add:[file=forms\contract\contract_CTPY.form.xml]" />
+      <tbbutton name="@open" cmd="properties:[file=forms\contract\contract_CTPY.form.xml]"/>
+      <tbbutton cmd="delete:[ask=@suredelelem]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <sep />
+      <tbcombo name="@agentcomp+:" query="mycompany_combo" width="*" style="list" cmd="refresh" paramno="1"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" />
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" />
+    </toolbar>
+    <!-- TOOLBAR для подразделений -->
+    <toolbar id="TOOLBAR_DEPT">
+      <tbbutton cmd="properties:[file=dialogs\agent_$(Kind).dialog.xml]" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" />
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" />
+    </toolbar>
+    <!-- TOOLBAR для фирм -->
+    <toolbar id="TOOLBAR_COMP">
+      <tbbutton name="@create" image="52"
+								tip="@create+\t(Ins)" descr="@TT_addelement">
+        <menuitem name="@agentcomp" image="0" cmd="add:[level=0;file=dialogs\agent_COMP.dialog.xml]" />
+        <menuitem name="@agentbranch" image="0" cmd="add:[useparent=1;file=dialogs\agent_CFIL.dialog.xml;for=COMP]" />
+        <menuitem name="@agentsdep" image="0" cmd="add:[useparent=1;file=dialogs\agent_SDEP.dialog.xml;for=COMP]" />
+        <menuitem name="@agentwarehouse" image="0" cmd="add:[useparent=1;file=dialogs\agent_WARH.dialog.xml;for=COMP|CFIL|SDEP]" />
+				<menuitem name="@agentworkshop" image="0" cmd="add:[useparent=1;file=dialogs\agent_WKSP.dialog.xml;for=COMP|CFIL|SDEP]" />
+        <menuitem name="@agentwkarea" image="0" cmd="add:[useparent=1;file=dialogs\agent_WKAR.dialog.xml;for=WKSP]" />
+        <sep />
+        <!-- Папка подразделений: в компании или в папке подразделений-->
+        <menuitem name="@depfolder" image="0" cmd="add:[useparent=1;file=dialogs\agent_DEPT_FOLDER.dialog.xml;for=COMP|DEPT:folder|CFIL|SDEP]" />
+        <!-- Подразделения: в компании, филиале или в папке подразделений-->
+        <menuitem name="@agentdep" image="0" cmd="add:[useparent=1;file=dialogs\agent_DEPT.dialog.xml;for=COMP|DEPT:folder|CFIL|SDEP]" />
+        <sep />
+        <!-- Папка торговых точек или в компании, филиале или в папке торговых точек-->
+        <menuitem name="@cposfolder" image="0" cmd="add:[useparent=1;file=dialogs\agent_CPOS_FOLDER.dialog.xml;for=COMP|CPOS:folder|CFIL|SDEP]" />
+        <!-- Создаем торговые точки или в компании, филиале или в папке торговых точек-->
+        <menuitem name="@agentcpos" image="0" cmd="add:[useparent=1;file=dialogs\agent_CPOS.dialog.xml;for=COMP|CPOS:folder|CFIL|SDEP]" />
+      </tbbutton>
+      <sep />
+      <tbbutton cmd="properties:[file=dialogs\agent_$(Kind)$(Folder).dialog.xml]" name="@properties" 
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" name="@delete" 
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <tbbutton cmd="main:[forkind=COMP,WARH,WKSP]" tip="@setmain" descr="@TT_setmain"/>
+      <sep />
+      <tbbutton name="@stafftable" image="117" cmd="showdialog:[file=dialogs\staff_table.dialog.xml;forkind=COMP|CFIL]" />
+    </toolbar>
+
+    <!-- TOOLBAR для меню -->
+    <toolbar id="TOOLBAR_MENU">
+      <tbbutton name="@create" image="52"
+								tip="@create+\t(Ins)" descr="@TT_addelement">
+        <menuitem name="Категория" image="0" cmd="add:[file=dialogs\menu_MENU_FOLDER.dialog.xml]" />
+        <menuitem name="Подкатегория" image="0" cmd="add:[useparent=1;level=0;file=dialogs\menu_MENU_FOLDER.dialog.xml]" />
+        <menuitem name="Элемент" image="0" cmd="add:[useparent=1;level=1;file=dialogs\menu_MENU_ITEM.dialog.xml]" />
+        <menuitem name="Комплект" image="0" cmd="add:[useparent=1;level=1;file=dialogs\menu_MSET_ITEM.dialog.xml]" />
+      </tbbutton>
+      <sep />
+      <tbbutton cmd="properties:[file=dialogs\menu_$(Kind)_$(SType).dialog.xml]" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <sep />
+      <tbbutton cmd="sort:up" image="24"/>
+      <tbbutton cmd="sort:down" image="25"/>
+      <sep />
+      <tbbutton cmd="delete:[ask=@suredelelem;query=a2entity.entity_class_delete]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <sep />
+      <tbbutton name="@pricelist" image="141" cmd="opensheet:[file=sheets\menu_pricelist.sheet.xml]" />
+    </toolbar>
+    <toolbar id="TOOLBAR_DISCOUNT_CARDS">
+      <tbbutton name="@create" image="52" cmd="addstd:discountcard"
+								tip="@create+\t(Ins)" descr="@TT_addelement" />
+      <tbbutton cmd="propsstd:discountcard" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <sep />
+      <tbbutton cmd="delete:[ask=@suredelelem;query=a2entity.discount_card_delete]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" descr="@TT_refresh"/>
+      <sep />
+      <tbbutton cmd="stddialog:discountclasses" image2="140" name="Виды дисконтных карт" />
+    </toolbar>   
+    <toolbar id="TOOLBAR_ACCOUNTPLAN">
+      <tbbutton cmd="addstd:[kind=SUU]" name="@create" tip="@create+\t(Ins)" descr="@TT_addelement"/>
+      <tbbutton cmd="properties" name="@properties" tip="@properties+ (Enter)" descr="@TT_properties"/>
+      <sep/>
+      <tbbutton cmd="delstd:[kind=AUSR;ask=Вы действительно хотите удалить счет &quot;{codeandname}&quot;?]" image="12" name="@delete"/>
+    </toolbar>    
+    <toolbar id="TOOLBAR_AGENT">
+      <tbbutton cmd="add" name="@create"
+								tip="@create+\t(Ins)" descr="@TT_addelement" />
+      <sep />
+      <tbbutton cmd="properties" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <sep />
+      <tbbutton cmd="flag" tip="@mark+\t(Space)" descr="Отметить элемент"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_GENERIC_FLG">
+      <tbbutton cmd="navigate" image="160" name="Перейти" tip="Перейти\t(Enter)" descr="Перейти к выделенному элементу"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" tip="@find+\t(Ctrl+F)" descr="@TT_find" />
+    </toolbar>
+    <toolbar id="TOOLBAR_ENTITY">
+      <tbbutton cmd="add" name="@create"
+								tip="@create+\t(Ins)" descr="@TT_addelement" />
+      <sep />
+      <tbbutton cmd="properties" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+      <sep />
+      <tbbutton cmd="flag" tip="@mark+\t(Space)" descr="Отметить элемент"/>
+    </toolbar>    
+    <toolbar id="TOOLBAR_DOC">
+			<tbbutton name="@newdocument" cmd="newdocument" 
+                tip="@newdocument+ (Ins)" descr="@TT_newdocument"/>
+			<sep />
+			<tbbutton cmd="opendocument" name="@open" 
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+			<tbbutton cmd="deletedocument" name="@delete" 
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+      <tbcombo name="@agentcomp+:" query="a2start.mycompany_combo" width="*" style="list" cmd="refresh" paramno="1"/>
+		</toolbar>
+    <toolbar id="TOOLBAR_DOC_WITH_ALL">
+      <tbbutton name="@newdocument" cmd="newdocument"
+                tip="@newdocument+ (Ins)" descr="@TT_newdocument"/>
+      <sep />
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+      <tbcombo name="@agentcomp+:" query="a2start.mycompany_combo_all" width="*" style="list" cmd="refresh" paramno="1"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOC_WITHOUT_NEW">
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+      <tbcombo name="@agentcomp+:" query="a2start.mycompany_combo" width="*" style="list" cmd="refresh" paramno="1"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOC_NO_MYCOMP">
+      <tbbutton	name="@newdocument" cmd="newdocument"
+                tip="@newdocument+ (Ins)" descr="@TT_newdocument"/>
+      <sep />
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+    </toolbar>
+    <toolbar id="TOOLBAR_DOC_POS">
+      <tbbutton name="@newdocument" cmd="newdocument" tip="@newdocument+ (Ins)" descr="@TT_newdocument"/>
+      <sep />
+      <tbbutton cmd="opendocument" name="@open" tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete" tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+      <tbcombo name="@agentcpos:" query="a2start.mycompany_pointofsale_all" width="*" style="list" cmd="refresh"     paramno="2" alwaysload="1"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOC_MC">
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+      <tbcombo name="@agentcomp+:" query="a2start.mycompany_combo_all" width="*" style="list" cmd="refresh" paramno="1"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOC_ENTITYRECEIPT_PROD">
+      <tbbutton
+								name="@newdocument"
+								cmd="newdocument:[id=810;base=entity]"
+                tip="@newdocument+ (Ins)" descr="@TT_newdocument"/>
+      <sep />
+
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOC_ENTITYRECEIPT_SEMI">
+      <tbbutton
+								name="@newdocument"
+								cmd="newdocument:[id=820;base=entity]"
+                tip="@newdocument+ (Ins)" descr="@TT_newdocument"/>
+      <sep />
+
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOC_NONEW">
+      <tbbutton cmd="opendocument" name="@open"
+                tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_deletedocument"/>
+      <sep />
+      <tbbutton cmd="find" name="@find" tip="@find+ (Ctrl+F)" descr="@TT_find"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_BANKACC">
+      <tbbutton cmd="addstd:[class=bankaccount; kind=COMP]" name="@create" tip="@create+ (Ins)" descr="@TT_addelement"/>
+      <tbbutton cmd="propsstd:[class=bankaccount; kind=COMP]" name="@properties" tip="@properties+ (Enter)" descr="@TT_properties"/>
+      <sep/>
+      <tbbutton cmd="refresh" name="@refresh" tip="@refresh+ (F5)" descr="@TT_refresh" />
+      <sep/>
+      <tbbutton cmd="delstd:[class=bankaccount;ask=Вы действительно хотите удалить счет &quot;{name}&quot;?]" image="12" name="@delete"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_DOCBANKACC">
+      <tbbutton image="1"
+								name="@newdocument"
+								tip="@newdocument+ (Ins)" descr="@TT_newdocument" cmd="newdocument" />
+      <sep />
+      <tbbutton cmd="opendocument" name="@open" tip="@open+ (Enter)" descr="@TT_opendocument"/>
+      <tbbutton cmd="deletedocument" name="@delete" tip="@delete+ (Del)" descr="@TT_deletedocument"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_CONTRACT_BANK">
+      <tbbutton cmd="add:[file=dialogs\contract_BANK.dialog.xml]" name="@create"
+								tip="@create+\t(Ins)" descr="@TT_addelement" />
+      <sep />
+      <tbbutton cmd="properties:[file=dialogs\contract_BANK.dialog.xml]" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="delete:[ask=@suredelelem]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_CONTRACT">
+      <tbbutton cmd="add:[file=dialogs\contract_GENR.dialog.xml]" name="@create"
+								tip="@create+\t(Ins)" descr="@TT_addelement" />
+      <sep />
+      <tbbutton cmd="properties:[file=dialogs\contract_GENR.dialog.xml]" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="delete:[ask=@suredelelem]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_CONTRACT_CUST">
+      <tbbutton name="@create" image="52">
+        <menuitem cmd="add:[file=dialogs\contract_GENR.dialog.xml]" name="Договор"
+                  tip="@create+\t(Ins)" descr="@TT_addelement" image="0"/>
+        <menuitem cmd="add:[file=forms\contract\contract_CTOP.form.xml]" name="Договор (производство)"
+                  tip="@create+\t(Ins)" descr="@TT_addelement" image="0"/>
+      </tbbutton>
+      <sep />
+      <tbbutton cmd="properties:[file=forms\contract\contract_CTOP.form.xml]" name="@properties"
+                tip="@properties+\t(Enter)" descr="@TT_properties"/>
+      <tbbutton cmd="delete:[ask=@suredelelem]" name="@delete"
+                tip="@delete+\t(Del)" descr="@TT_delete"/>
+    </toolbar>
+    <toolbar id="TOOLBAR_PERIODICAL_REPORT">
+      <!--
+      <tbbutton
+								name="@create"
+								cmd="newreport"
+                tip="@create+ (Ins)" descr="@TT_create"/>
+      <sep />
+      <tbbutton cmd="deletereport" name="@delete"
+                tip="@delete+ (Delete)" descr="@TT_delete"/>
+      <sep />
+      -->
+      <tbcombo name="@agentcomp+:" query="a2start.mycompany_combo" width="*" style="list" cmd="refresh" paramno="1"/>
+    </toolbar>
+  </toolbars>
+  <menus>
+		<menu id="TEMPLATE_TREE">
+			<menuitem name="Доступ" cmd="permissions" admin="1"/>
+		</menu>
+		<menu id="ENTITY_TREE">
+      <menuitem cmd="newtreeitem" name="@create+\tIns"/>
+      <menuitem cmd="renametreeitem" name="@rename+\tF2" />
+      <menuitem cmd="propstreeitem:[file=dialogs\entity_tree_folder.dialog.xml]" name="@properties+\t(Alt+Enter)" />
+      <sep />
+      <menuitem cmd="find" name="@find+\t(Ctrl+F)" />
+      <sep />
+      <menuitem name="@delete+\tDel" cmd="deletetreeitem:[ask=@suredelelem]" />
+      <sep />
+      <menuitem name="Доступ" cmd="permissions" admin="1"/>
+    </menu>
+    <menu id="AGENT_TREE">
+      <menuitem cmd="newtreeitem" name="@create+\tIns"/>
+      <menuitem cmd="renametreeitem" name="@rename+\tF2" />
+      <sep />
+      <menuitem cmd="find" name="@find+\t(Ctrl+F)" />
+      <sep />
+      <menuitem name="@delete+\tDel" cmd="deletetreeitem:[ask=@suredelelem]" />
+      <sep />
+      <menuitem name="Доступ" cmd="permissions" admin="1"/>
+    </menu>
+    <menu id="MENU_DOC">
+      <menuitem name="@open+ (Enter)" cmd="opendocument" />
+      <menuitem cmd="deletedocument" name="@delete" />
+      <sep />
+      <menuitem name="@unapply" cmd="unapplydocument"/>
+    </menu>
+  </menus>
+  <tabsets>
+		<tabs id="BANK_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_ENTITY_DOC" menu="MENU_DOC"
+                 dblclkcmd="opendocument" sortable="1"
+                 query="documents_AGENT" basefordoc="agent"
+                 >
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ins" cmd="newdocument"/>
+            <accel key="Del" cmd="deletedocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@contracts" toolbar="TOOLBAR_CONTRACT_BANK">
+         <itemlist columns="COLUMNS_CONTRACT" refclass="contract" query="contracts_BANK"/>
+      </tab>
+    </tabs>
+    <tabs id="AGENT_GNR_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_ENTITY_DOC" menu="MENU_DOC"
+                 dblclkcmd="opendocument" sortable="1"
+                 query="documents_AGENT" basefordoc="agent"
+                 >
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ins" cmd="newdocument"/>
+            <accel key="Del" cmd="deletedocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@contracts" toolbar="TOOLBAR_CONTRACT">
+        <itemlist columns="COLUMNS_CONTRACT" refclass="contract" query="contracts_GENR"/>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="AGENT_CUST_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_ENTITY_DOC" menu="MENU_DOC"
+                 dblclkcmd="opendocument" sortable="1"
+                 query="documents_AGENT" basefordoc="agent"
+                 >
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ins" cmd="newdocument"/>
+            <accel key="Del" cmd="deletedocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@contracts" toolbar="TOOLBAR_CONTRACT_CUST">
+        <itemlist columns="COLUMNS_CONTRACT" refclass="contract" query="contracts_GENR"/>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="AGENT_FISC_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_ENTITY_DOC" menu="MENU_DOC"
+                 dblclkcmd="opendocument" sortable="1"
+                 query="documents_AGENT" basefordoc="agent"
+                 >
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ins" cmd="newdocument"/>
+            <accel key="Del" cmd="deletedocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="TABS_BANKACCOUNT">
+      <tab toolbar="TOOLBAR_DOCBANKACC" name="@documents">
+        <doclist columns="DOCCOLUMNS_BANKACC" menu="MENU_DOC"
+               dblclkcmd="opendocument" sortable="1"
+							 query="documents_BANKACC" basefordoc="bankaccount">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ins" cmd="newdocument"/>
+            <accel key="Del" cmd="deletedocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="ACCOUNT_TABS">
+      <tab name="@documents">
+        <doclist columns="COLUMNS_DOCACC" query="documents_ACCOUNT" 
+                 dblclkcmd="opendocument" sortable="1" menu="MENU_DOC"
+                 basefordoc="account">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="AGENT_DEPT_TABS">
+      <!--
+			<tab name="@accdocuments" toolbar="TOOLBAR_DOC_NONEW">
+				<doclist columns="COLUMNS_ACC_WITH_DOC" sortable="1" menu="MENU_DOC"
+              query="documents_DEPT_ACC" basefordoc="agent" dblclkcmd="opendocument">
+					<acceltable>
+						<accel key="Enter" cmd="opendocument"/>
+						<accel key="Ctrl+F" cmd="find"/>
+						<accel key="Del" cmd="deletedocument"/>
+					</acceltable>
+				</doclist>
+			</tab>
+      -->
+			<tab name="@hrdocuments" toolbar="TOOLBAR_DOC_NONEW">
+        <doclist columns="COLUMNS_HR_WITH_DOC" sortable="1" menu="MENU_DOC"
+              query="documents_DEPT_HR" basefordoc="agent" dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@timecounting" toolbar="TOOLBAR_DOC_NONEW">
+        <doclist columns="COLUMNS_HR_WITH_DOC" basefordoc="agent"
+                 sortable="1" menu="MENU_DOC"
+                 query="documents_DEPT_TB" dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find" />
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@paydocuments" toolbar="TOOLBAR_DOC_NONEW">
+        <!-- зарплатные документы по подразделению -->
+        <doclist columns="COLUMNS_HR_WITH_DOC_DEP" sortable="1"
+                 dblclkcmd="opendocument" menu="MENU_DOC"
+                 query="documents_DEPT_PY">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="EMPLOYER_TABS">
+      <tab name="@hrdocuments" toolbar="TOOLBAR_DOCEMPL">
+        <doclist columns="COLUMNS_HR_WITH_DOC" menu="MENU_DOC"
+                 query="documents_EMPL_HR" basefordoc="employer"
+                 dblclkcmd="opendocument" sortable="1"
+                 >
+          <acceltable>
+            <accel key="Enter" cmd="opendocument" />
+            <accel key="Ctrl+F" cmd="find" />
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@timecounting" toolbar="TOOLBAR_DOCEMPL_TB">
+        <doclist columns="COLUMNS_HR_WITH_DOC" basefordoc="employer"
+                 sortable="1" menu="MENU_DOC"
+                 query="documents_EMPL_TB" dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument" />
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@paydocuments" toolbar="TOOLBAR_DOC_NONEW">
+        <!-- зарплатные документы по сотруднику -->
+        <doclist columns="COLUMNS_HR_WITH_DOC_DEP" sortable="1"
+                 dblclkcmd="opendocument" menu="MENU_DOC"
+                 query="documents_EMPL_PY">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="EMPLEMCT_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_NONEW">
+        <doclist columns="COLUMNS_DOC" menu="MENU_DOC"
+            dblclkcmd="opendocument" sortable="1" query="documents_EMPL_CT">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+          </acceltable>
+        </doclist>
+      </tab>
+    </tabs>
+    <tabs id="ENTITY_MATR_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_ENTITY_DOC" sortable="1" menu="MENU_DOC"
+                 query="documents_ENTITY_MATR" basefordoc="entity"
+                 dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <!--INS MATR
+      <tab name="Рецептури">
+        <doclist columns="COLUMNS_ENTITY_MART_RECIPES" sortable="1" menu="MENU_DOC"
+                 query="documents_ENTITY_MATR_recipes" basefordoc="entity"
+                 dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      -->
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="ENTITY_ASXX_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_ENTITY_DOC" sortable="1" menu="MENU_DOC"
+                 query="documents_ENTITY_MATR" basefordoc="entity"
+                 dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="ENTITY_PROD_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_ENTITY_DOC" sortable="1" menu="MENU_DOC"
+                 query="documents_ENTITY_MATR" basefordoc="entity"
+                 dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="Рецептуры" toolbar="TOOLBAR_DOC_ENTITYRECEIPT_PROD">
+        <doclist columns="COLUMNS_ENTITY_RECEIPT" menu="MENU_DOC" sortable="1"
+                 query="documents_ENTITY_RECEIPT" basefordoc="entity"
+                 dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+    <tabs id="ENTITY_SEMI_TABS">
+      <tab name="@documents" toolbar="TOOLBAR_DOC_MC">
+        <doclist columns="COLUMNS_ENTITY_DOC" sortable="1" menu="MENU_DOC"
+                 query="documents_ENTITY_MATR" basefordoc="entity"
+                 dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="Рецептуры" toolbar="TOOLBAR_DOC_ENTITYRECEIPT_SEMI" >
+        <doclist columns="COLUMNS_ENTITY_RECEIPT" sortable="1" menu="MENU_DOC"
+                 query="documents_ENTITY_RECEIPT" basefordoc="entity"
+                 dblclkcmd="opendocument">
+          <acceltable>
+            <accel key="Enter" cmd="opendocument"/>
+            <accel key="Ctrl+F" cmd="find"/>
+            <accel key="Del" cmd="deletedocument"/>
+          </acceltable>
+        </doclist>
+      </tab>
+      <tab name="@reports">
+        <replist />
+      </tab>
+    </tabs>
+  </tabsets>
+	<panes>
+    <pane id="mycompany_COMP_KIND" toolbar="TOOLBAR_COMP" tasks="tasks\mycompany_COMP_KIND.tasks.xml">
+      <treelist query="agent_COMP" columns="COLUMNS_COMP"
+                dlgmode="modal" firstexpanded="0"
+                dblclkcmd="properties:[file=dialogs\agent_$(Kind)$(Folder).dialog.xml]"
+                refclass="agent" enabledrag="1" enabledrop="1"
+                >
+        <acceltable>
+          <accel key="Enter" cmd="properties:[file=dialogs\agent_$(Kind)$(Folder).dialog.xml]"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]"/>
+        </acceltable>
+      </treelist>
+    </pane>
+    <pane id="mycompany_DEPT" tabs="EMPLOYER_TABS" toolbar="TOOLBAR_EMPL_2" tasks="tasks\mycompany_DEPT.tasks.xml">
+      <itemlist query="agent_EMPL_DEPT" columns="COLUMNS_EMPL"
+                refclass="agent">
+        <acceltable>
+          <accel key="Enter" cmd="properties:[file=dialogs\agent_PERS.dialog.xml;fieldnoasid=1]"/>
+          <accel key="Ctrl+F" cmd="find" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="mycompany_COMP" tabs="AGENT_DEPT_TABS" toolbar="TOOLBAR_DEPT" tasks="tasks\mycompany_COMP.tasks.xml">
+      <itemlist query="agent_DEPT" columns="COLUMNS_DEPT"
+                dlgmode="modal" refclass="agent"
+                dblclkcmd="properties:[file=dialogs\agent_$(Kind).dialog.xml]">
+
+      </itemlist>
+    </pane>
+    <pane id="mycompany_CFIL" as="mycompany_COMP" />
+    <pane id="mycompany_SDEP" as="mycompany_COMP" />
+    <pane id="mycompany_DEPT_FOLDER" as="mycompany_COMP" />
+    <pane id="mycompany_CPOS_FOLDER" as="mycompany_COMP" />
+    <pane id="mycompany_CPOS" as="mycompany_DEPT" />
+    <pane id="mycompany_WARH" as="mycompany_DEPT" />
+    <pane id="mycompany_WKSP" as="mycompany_DEPT" />
+    <pane id="mycompany_WKAR" as="mycompany_DEPT" />
+    <pane id="mycompany_BNAC" toolbar="TOOLBAR_BANKACC" tabs="TABS_BANKACCOUNT" tasks="tasks\mycompany_BNAC.tasks.xml">
+      <itemlist
+				refclass="bankaccount"
+				grouping="1"
+				columns="COLUMNS_BANKACC"
+				menu="MENU_BANKACC"
+				mode="std"
+				query="bankaccount_LIST">
+        <acceltable>
+          <accel key="Enter" cmd="propsstd:[class=bankaccount; kind=COMP]"/>
+          <accel key="Ins" cmd="addstd:[class=bankaccount; kind=COMP]" />
+          <accel key="Del" cmd="delstd:[class=bankaccount;ask=Вы действительно хотите удалить счет &quot;{name}&quot;?]"/>
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="mycompany_MCHR">
+      <replist href="lists\folder_hr.list.xml"/>
+    </pane>
+    <pane id="mycompany_PERS" toolbar="TOOLBAR_PERS" tasks="tasks\mycompany_PERS.tasks.xml">
+      <itemlist query="agent_PERS" columns="COLUMNS_PERS"
+                dlgmode="modal"
+                refclass="agent"
+                dblclkcmd="properties"
+                dialoghref="dialogs\agent_PERS.dialog.xml">
+        <acceltable>
+          <accel key="Enter" cmd="properties"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]"/>
+        </acceltable>        
+      </itemlist>
+    </pane>
+    <pane id="mycompany_EMPL" toolbar="TOOLBAR_EMPL" tabs="EMPLOYER_TABS" tasks="tasks\mycompany_EMPL.tasks.xml">
+      <itemlist query="agent_EMPL" columns="COLUMNS_EMPL"
+                refclass="agent">
+        <acceltable>
+          <accel key="Enter" cmd="properties:[file=dialogs\agent_PERS.dialog.xml;fieldnoasid=1]"/>
+          <accel key="Ctrl+F" cmd="find" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="mycompany_EMRL" toolbar="TOOLBAR_EMRL" tabs="EMPLOYER_TABS" tasks="tasks\mycompany_EMRL.tasks.xml">
+      <itemlist query="agent_EMRL" columns="COLUMNS_EMRL"
+                refclass="agent">
+        <acceltable>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </itemlist>
+    </pane>
+
+    <pane id="mycompany_EMCT" toolbar="TOOLBAR_EMCT" tabs="EMPLEMCT_TABS" tasks="tasks\mycompany_EMCT.tasks.xml">
+      <itemlist query="agent_EMCT" columns="COLUMNS_EMCT"
+                refclass="agent"/>
+    </pane>
+
+    <pane id="mycompany_CTPN">
+      <replist />
+    </pane>
+
+    <pane id="mycompany_CTAG" toolbar="TOOLBAR_CTAG">
+      <itemlist query="contracts_CTAG" columns="COLUMNS_CONTRACT"
+                refclass="contract" dblclkcmd="properties:[file=forms\contract_CTAG.form.xml]">
+      <acceltable>
+        <accel key="Enter" cmd="properties:[file=forms\contract_CTAG.form.xml]"/>
+      </acceltable>
+      </itemlist>
+    </pane>
+
+    <pane id="mycompany_CTPY" toolbar="TOOLBAR_CTPY">
+      <itemlist query="contracts_CTPY" columns="COLUMNS_CONTRACT"
+                refclass="contract" dblclkcmd="properties:[file=forms\contract\contract_CTPY.form.xml]">
+        <acceltable>
+          <accel key="Enter" cmd="properties:[file=forms\contract\contract_CTPY.form.xml]"/>
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="mycompany_ACPL" toolbar="TOOLBAR_ACCOUNTPLAN" tabs="ACCOUNT_TABS" tasks="tasks\mycompany_ACPL.tasks.xml">
+      <accountlist refclass="account"/>
+    </pane>
+    <pane id="mycompany_MENU" toolbar="TOOLBAR_MENU" tasks="tasks\mycompany_MENU.tasks.xml">
+      <treelist query="mycompany_MENU" columns="COLUMNS_MENU"
+                dlgmode="modal" dblclkcmd="properties:[file=dialogs\menu_$(Kind)_$(SType).dialog.xml]"
+                refclass="classtree">
+        <acceltable>
+          <accel key="Enter" cmd="properties:[file=dialogs\menu_$(Kind)_$(SType).dialog.xml]"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_class_delete]"/>
+          <accel key="Alt+Up" cmd="sort:up" />
+          <accel key="Alt+Down" cmd="sort:down" />
+        </acceltable>
+      </treelist>
+    </pane>
+    <pane id="mycompany_DISC" toolbar="TOOLBAR_DISCOUNT_CARDS">
+      <itemlist query="mycompany_DISC" columns="COLUMNS_DISCOUNT_CARDS"
+                dblclkcmd="propsstd:discountcard"
+                refclass="discountcard">
+        <acceltable>
+          <accel key="Ins" cmd="addstd:discountcard"/>
+          <accel key="Enter" cmd="propsstd:discountcard"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.discount_card_delete]"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="mycompany_PLST">
+      <dialog href="dialogs\price_list.dialog.xml" />
+    </pane>
+    <pane id="mycompany_SLPL">
+      <dialog href="dialogs\sales_plans.dialog.xml" />
+    </pane>
+    <pane id="agent_BANK" toolbar="TOOLBAR_AGENT" tabs="BANK_TABS" tasks="tasks\agent_BANK.tasks.xml">
+      <itemlist query="agent_BANK" columns="COLUMNS_BANK"
+                dlgmode="modal" enabledrag="1"
+                refclass="agent" dblclkcmd="properties"
+                dialoghref="dialogs\agent_BANK.dialog.xml">
+        <acceltable>
+          <accel key="Enter" cmd="properties"/>
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add" />
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="agent_FISC" toolbar="TOOLBAR_AGENT" tabs="AGENT_FISC_TABS"  tasks="tasks\agent_FISC.tasks.xml">
+      <itemlist query="agent_FISC" columns="COLUMNS_FISC"
+                dlgmode="modal" enabledrag="1"
+                refclass="agent" dblclkcmd="properties"
+                dialoghref="dialogs\agent_FISC.dialog.xml">
+        <acceltable>
+          <accel key="Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="agent_SUPL" toolbar="TOOLBAR_AGENT" tabs="AGENT_GNR_TABS"  tasks="tasks\agent_SUPL.tasks.xml">
+      <itemlist query="agent_SUPL" columns="COLUMNS_FISC"
+                dlgmode="modal" enabledrag="1"
+                refclass="agent" singlesel="0" dblclkcmd="properties"
+                dialoghref="dialogs\agent_SUPL.dialog.xml">
+        <acceltable>
+          <accel key="Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="agent_OTHR" toolbar="TOOLBAR_AGENT" tabs="AGENT_GNR_TABS">
+      <itemlist query="agent_OTHR" columns="COLUMNS_FISC"
+                dlgmode="modal" enabledrag="1"
+                refclass="agent" singlesel="0" dblclkcmd="properties"
+                dialoghref="dialogs\agent_OTHR.dialog.xml">
+        <acceltable>
+          <accel key="Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="agent_CNTR" toolbar="TOOLBAR_AGENT" tabs="AGENT_GNR_TABS">
+      <itemlist query="agent_CNTR" columns="COLUMNS_FISC"
+                dlgmode="modal" enabledrag="1"
+                refclass="agent" singlesel="0" dblclkcmd="properties"
+                dialoghref="dialogs\agent_CNTR.dialog.xml">
+        <acceltable>
+          <accel key="Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="agent_CUST" toolbar="TOOLBAR_AGENT" tabs="AGENT_CUST_TABS" tasks="tasks\agent_CUST.tasks.xml">
+      <itemlist query="agent_CUST" columns="COLUMNS_FISC"
+                dlgmode="modal" enabledrag="1"
+                refclass="agent" dblclkcmd="properties"
+                dialoghref="dialogs\agent_CUST.dialog.xml">
+        <acceltable>
+          <accel key="Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2agent.agent_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="agent_-FLG" toolbar="TOOLBAR_GENERIC_FLG">
+      <itemlist query="agent_FLG" columns="COLUMNS_AGENT_GENERAL"
+                refclass="agent" grouping="1" dblclkcmd="navigate">
+        <acceltable>
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Enter" cmd="navigate"/>
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="agent_-DEL">
+      <itemlist query="agent_DEL" columns="COLUMNS_AGENT_GENERAL"
+                refclass="agent" grouping="1"/>
+    </pane>
+    <!-- панели для объектов учета -->
+    <pane id="entity_STCK">
+      <replist />
+    </pane>
+    <pane id="entity_ASTS">
+      <replist />
+    </pane>
+    <pane id="entity_ASMA">
+      <replist />
+    </pane>
+    <pane id="entity_ASNM">
+      <replist />
+    </pane>
+    <pane id="entity_SVCF">
+      <replist />
+    </pane>
+    <pane id="entity_ONTA">
+      <replist />
+    </pane>
+    <pane id="entity_GOOD" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS"  tasks="tasks\entity_GOOD.tasks.xml">
+      <itemlist query="entity_GOOD" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1"
+                dblclkcmd="properties" singlesel="0" 
+                dialoghref="dialogs\entity_GOOD.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_SEMI" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_SEMI_TABS" tasks="tasks\entity_SEMI.tasks.xml">
+      <itemlist query="entity_SEMI" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_SEMI.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_MSEM" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_MSEM" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_MSEM.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_PROD" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_PROD_TABS"  tasks="tasks\entity_PROD.tasks.xml">
+      <itemlist query="entity_PROD" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_PROD.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_MATR" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS" tasks="tasks\entity_MATR.tasks.xml">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_MATR.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_PACK" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_PACK.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_BILD" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_BILD.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_PART" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_PART.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+
+      </itemlist>
+    </pane>
+    <pane id="entity_LCST" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS" tasks="tasks\entity_LCST.tasks.xml">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_LCST.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_ASXX" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_ASXX.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_ASLN" as="entity_ASXX" />
+    <pane id="entity_ASBC" as="entity_ASXX" />
+    <pane id="entity_ASME" as="entity_ASXX" />
+    <pane id="entity_ASTD" as="entity_ASXX" />
+    <pane id="entity_ASLS" as="entity_ASXX" />
+    <pane id="entity_ASPR" as="entity_ASXX" />
+    <pane id="entity_ASOT" as="entity_ASXX" />
+    <pane id="entity_LVTA" as="entity_ASXX" />
+    <pane id="entity_ONTC" as="entity_ASXX" />
+    <pane id="entity_FUEL" as="entity_MATR" />
+    <pane id="entity_ASTR" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_ASXX_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_ASTR.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_SVCI" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_SVCI.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_SVCO" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_SVCO.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_JOBS" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_JOBS.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+		<pane id="entity_FISC">
+			<itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dialoghref="dialogs\entity_FISC.dialog.xml">
+				<acceltable>
+					<accel key="Ctrl+F" cmd="find"/>
+					<accel key="Space" cmd="flag" />
+				</acceltable>
+			</itemlist>
+		</pane>
+		<pane id="entity_ENMN" toolbar="TOOLBAR_ENTITY" tabs="ENTITY_MATR_TABS">
+      <itemlist query="entity_FOLDER" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" enabledrag="1" singlesel="0"
+                dblclkcmd="properties"
+                dialoghref="dialogs\entity_ENMN.dialog.xml">
+        <acceltable>
+          <accel key="Alt+Enter" cmd="properties" />
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Ins" cmd="add"/>
+          <accel key="Del" cmd="delete:[ask=@suredelelem;query=a2entity.entity_delete]" />
+          <accel key="Space" cmd="flag" />
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="entity_-DEL">
+      <itemlist query="entity_DEL" columns="COLUMNS_ENTITY_GOOD"
+                refclass="entity" grouping="1"/>
+    </pane>
+    <pane id="entity_-FLG" toolbar="TOOLBAR_GENERIC_FLG">
+      <itemlist query="entity_FLG" columns="COLUMNS_ENTITY_STD"
+                refclass="entity" grouping="1" dblclkcmd="navigate">
+        <acceltable>
+          <accel key="Ctrl+F" cmd="find"/>
+          <accel key="Enter" cmd="navigate"/>
+        </acceltable>
+      </itemlist>
+    </pane>
+    <pane id="template_TMLB" toolbar="TOOLBAR_DOC_WITH_ALL" tasks="tasks\template_TMLB.tasks.xml"> 
+      <!-- документы по бухгалтерии-->
+      <doclist columns="COLUMNS_DOC" menu="MENU_DOC"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_ACCOUNT" sortable="1">
+        <acceltable>
+          <accel key="Ins" cmd="newdocument"/>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLY" toolbar="TOOLBAR_DOC"  tasks="tasks\template_TMLY.tasks.xml">
+      <!-- документы по зарплате-->
+      <doclist columns="COLUMNS_DOC"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_PAYROLL" sortable="1" menu="MENU_DOC">
+        <acceltable>
+          <accel key="Ins" cmd="newdocument"/>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMNJ" toolbar="TOOLBAR_DOC_WITHOUT_NEW">
+      <!-- БОЛЬНИЧНЫЕ-->
+      <doclist columns="COLUMNS_DOC"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_PAYROLL_NJ" sortable="1" menu="MENU_DOC">
+        <acceltable>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLN" toolbar="TOOLBAR_DOC_WITHOUT_NEW">
+      <!-- документы по зарплате-->
+      <doclist columns="COLUMNS_DOC"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_PAYROLL" sortable="1" menu="MENU_DOC">
+        <acceltable>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLH" toolbar="TOOLBAR_DOC"  tasks="tasks\template_TMLH.tasks.xml">
+      <!-- документы по кадрам (с дочерними без сортировки)-->
+      <doclist columns="COLUMNS_HR" menu="MENU_DOC"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_HR" sortable="1">
+        <acceltable>
+          <accel key="Ins" cmd="newdocument"/>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLA" toolbar="TOOLBAR_DOC_WITH_ALL">
+      <!-- документы по ТМЦ-->
+      <doclist columns="COLUMNS_DOC_AS"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_AS" sortable="1" menu="MENU_DOC">
+        <acceltable>
+          <accel key="Ins" cmd="newdocument"/>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLC" toolbar="TOOLBAR_DOC_NO_MYCOMP">
+      <!-- документы по рецептуре-->
+      <doclist columns="COLUMNS_DOC_RCPT"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_RCPT" sortable="1" menu="MENU_DOC">
+        <acceltable>
+          <accel key="Ins" cmd="newdocument"/>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLM" toolbar="TOOLBAR_DOC">
+      <!-- Акты переработки-->
+      <doclist columns="COLUMNS_DOC_PROD"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_PROD" sortable="1" menu="MENU_DOC">
+        <acceltable>
+          <accel key="Ins" cmd="newdocument"/>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLR" toolbar="TOOLBAR_DOC">
+      <!-- документы РРО-->
+      <doclist columns="COLUMNS_DOC_RORD"
+               dblclkcmd="opendocument"
+               query="documents_TEMPLATE_RORD" sortable="1" menu="MENU_DOC">
+        <acceltable>
+          <accel key="Ins" cmd="newdocument"/>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLU_KIND" toolbar="TOOLBAR_DOC_NONEW">
+      <!-- непроведенные -->
+      <doclist columns="DOC_COLUMNS_UN" sortable="1"
+               dblclkcmd="opendocument" grouping="1"
+				       query="documents_TEMPLATE_UN">
+        <acceltable>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMAL_KIND" toolbar="TOOLBAR_DOC_WITHOUT_NEW">
+      <!-- все в периоде -->
+      <doclist columns="DOC_COLUMNS_UN" sortable="1"
+               dblclkcmd="opendocument" grouping="1"
+				       query="documents_TEMPLATE_ALL">
+        <acceltable>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Del" cmd="deletedocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="template_TMLP_KIND" toolbar="TOOLBAR_DOC_NONEW">
+      <!-- непроведенные -->
+      <doclist columns="DOC_COLUMNS_UN" sortable="1"
+               dblclkcmd="opendocument"
+				       query="documents_TEMPLATE_UNPAY">
+        <acceltable>
+          <accel key="Enter" cmd="opendocument"/>
+          <accel key="Ctrl+F" cmd="find"/>
+        </acceltable>
+      </doclist>
+    </pane>
+    <pane id="service_CATS">
+      <replist href="lists\service_catalogs.list.xml"/>
+		</pane>
+		<pane id="service_ADMIN">
+			<replist href="lists\service_admin.list.xml"/>
+		</pane>
+    <pane id="service_TOOLS">
+      <replist href="lists\service_tools.list.xml"/>
+    </pane>
+    <pane id="service_IMPORT">
+      <replist href="lists\service_import.list.xml"/>
+    </pane>
+    <pane id="service_SERVICE">
+			<replist href="lists\service.list.xml"/>
+		</pane>
+		<pane id="report_GNRL">
+			<replist href="lists\reports_general.list.xml"/>
+		</pane>
+    <pane id="report_ACNT">
+      <replist href="lists\reports_accounting.list.xml"/>
+    </pane>
+    <pane id="report_HRES">
+      <replist href="lists\reports_hr.list.xml"/>
+    </pane>
+    <pane id="report_PAYR">
+      <replist href="lists\reports_payroll.list.xml"/>
+    </pane>
+    <pane id="report_SRVC">
+      <replist href="lists\reports_service.list.xml"/>
+    </pane>
+    <pane id="report_RETL">
+      <replist href="lists\reports_retail.list.xml"/>
+    </pane>
+    <pane id="report_WARH">
+      <replist href="lists\reports_warehouse.list.xml"/>
+    </pane>
+    <pane id="report_FRCL">
+      <replist href="lists\reports_retail_franch_cl.list.xml"/>
+    </pane>
+    <pane id="report_TIMB">
+      <replist href="lists\reports_tb.list.xml"/>
+    </pane>
+    <!-- периодические отчеты-->
+    <pane id="report_PRRT">
+      <replist />
+    </pane>
+    <pane id="report_PRRP" toolbar="TOOLBAR_PERIODICAL_REPORT">      
+      <replist mode="periodical"/>
+    </pane>
+    <!-- в панели для шаблонов используется typesuffix="1", поэтому с уточнением типа-->
+    <pane id="template_TMLF_KIND">
+      <replist href="lists\reports_general.list.xml"/>
+    </pane>
+    <pane id="template_TMLB_FOLDER">
+      <replist href="lists\reports_general.list.xml"/>
+    </pane>
+    <pane id="template_TMFH_KIND">
+      <replist href="lists\folder_hr.list.xml"/>
+    </pane>
+    <pane id="template_TMFB_KIND">
+      <replist href="lists\folder_hr.list.xml"/>
+    </pane>
+    <pane id="template_TMFY_KIND">
+      <replist href="lists\folder_py.list.xml"/>
+    </pane>
+    <pane id="template_TMFM_KIND">
+      <replist href="lists\folder_matr.list.xml"/>
+    </pane>
+    <pane id="template_TMFT_KIND">
+      <replist href="lists\folder_tb.list.xml"/>
+    </pane>
+    <pane id="template_TMFA_KIND">
+      <replist href="lists\folder_ta.list.xml"/>
+    </pane>
+    <pane id="template_TMFS_KIND">
+      <replist href="lists\folder_svc.list.xml"/>
+    </pane>
+    <pane id="template_TFBN_FOLDER">
+      <replist href="lists\folder_tfbank.list.xml"/>
+    </pane>
+  </panes>
+</uiconfig>

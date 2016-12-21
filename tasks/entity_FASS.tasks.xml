@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<tasks>
+  <group name="@general">
+    <task cmd="add" image="52" name="@create" tip="@TT_addelement+ (Ins)" />
+    <task cmd="properties" image="10" name="@properties" tip="@TT_properties+ (Enter)" />
+    <task cmd="delete:[ask=@suredelelem]" image="12" name="@delete" tip="@TT_delete+ (Del)" />
+  </group>
+  <group name="@reports">
+    <task cmd="opensheet:[file=sheets\entity_turnover.sheet.xml]" name="@turnoveracc" image="28"/>
+  </group>
+</tasks>
