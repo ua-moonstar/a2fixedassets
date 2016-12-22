@@ -24,64 +24,114 @@
           <column width="70mm"/>         
           <column width="*"/>
           <column width="40mm"/>
-        </columns>
-        
+        </columns>      
         <tbody>
-
           <tr> <td align="center" border-bottom="default" bind="mycompany" colspan="1"/>  <td colspan="3" align="right">Типова форма № ОЗ-6</td>     </tr>
           <tr> <td align="center" colspan="1">(підприємство, організація)</td> <td colspan="3" align="right">Затверджена наказом Мінстату</td>   </tr>
           <tr> <td colspan="1"></td> <td colspan="3" align="right">України від 29.12.95 р. №352</td>   </tr>
-          <tr> <td></td> </tr>
-       
+          <tr> <td></td> </tr>      
         </tbody>
-
       </table>
+      <!--  Шапка 1  --> 
       
-      <!--  Шапка 3  -->
+      <!--  Шапка 2  --> 
       <table>
         <columns>
-          <column width="70mm"/>         
+          <column width="60mm"/>    
+          <column width="35mm"/>   
+          <column width="100mm"/>   
+          <column width="35mm"/>   
           <column width="*"/>
-          <column width="40mm"/>
+        </columns>      
+        <tbody>
+        <tr>
+          <td align="left" colspan="1">Ідентифікаційний код ЄДРПОУ:</td>
+          <td align="center" border="default" bind="mycompany" colspan="1"/>
+          <td colspan="1"/>
+          <td align="center" colspan="1">Код по УКУД</td>
+          <td align="center" border="default"  bind="" colspan="1"/>
+        </tr>
+          <tr> <td></td> </tr>      
+        </tbody>
+      </table>
+      <!--  Шапка 2  -->         
+              
+      <!--  Шапка 3  --> 
+      <table>
+        <columns>
+          <column width="170mm"/>         
+          <column width="40"/>
+          <column width="40"/>
+          <column width="*"/>
         </columns>
         
         <tbody>
           <tr>
-            <td colspan="1" align="center" >ІНВЕНТАРНА КАРТКА</td>
-            <td border="default" align="left" gridcell="1" bind="field:HTIN"/>
+          <td colspan="1"></td>
+          <td colspan="2" wrap="1" align="center" border="default">Бухгалтерський запис (акт, накладна)</td>
+          <td rowspan="2" wrap="1" align="center" border="default">Первісна вартість\nвсіх об'єктів </td>
           </tr>
-          <tr>
-            <td colspan="1" align="center">обліку основних засобів</td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-                  
+
         <tr>
-          <td align="center" border-bottom="default" bind="" colspan="3" font="1" intr="5"/>
-        </tr>
-        <tr>
-          <td align="center" colspan="3" font="4">(повне найменування та призначення об'єкта)</td>
-        </tr>
-        <tr>
-          <td align="center" border-bottom="default" bind="" colspan="3" font="1" intr="5"/>
-        </tr>
-        <tr>
-          <td align="center" colspan="3" font="4">(найменування заводу-виготовлювача)</td>
+          <td colspan="1"></td>
+          <td colspan="1" wrap="1" align="center" border="default">дата</td>
+          <td colspan="1" wrap="1" align="center" border="default">номер</td>
         </tr>
 
         <tr>
-          <td align="center" border-bottom="default" bind="" colspan="3" font="1" intr="5"/>
+          <td colspan="1"></td>
+          <td colspan="1" wrap="1" align="center" border="default">16</td>
+          <td colspan="1" wrap="1" align="center" border="default">17</td>
+          <td colspan="1" wrap="1" align="center" border="default">18</td>
         </tr>
+
         <tr>
-          <td align="center" colspan="3" font="4">(модель, тип, марка)</td>
-        </tr>
+          <td colspan="1"></td>
+          <td colspan="1" border="default" bind=""></td>
+          <td colspan="1" border="default" bind=""></td>
+          <td colspan="1" border="default" bind=""></td>
+        </tr> 
+        
+        <tr> <td></td> </tr>      
+        </tbody>
+
+      </table>
+      <!--  Шапка 3  -->    
+      
+      <!--  Шапка 4  -->
+      <table>
+        <columns>
+          <column width="148mm"/> 
+          <column width="30mm"/>    
+          <column width="*"/>
+        </columns>
+        
+        <tbody>
+          <tr>
+            <td colspan="1" align="right"  style="title">ІНВЕНТАРНА КАРТКА</td>
+            <td colspan="1" border="default" style="bold" align="left" gridcell="1" bind=""/>
+            <td colspan="1"/>
+          </tr>
+          <tr>
+            <td colspan="1" align="right" style="bold">обліку основних засобів</td>
+          </tr>
+          <tr> <td></td>  </tr>
+                  
+        <tr> <td align="center" border-bottom="default" bind="" colspan="3"/>       </tr>
+        <tr> <td align="center" colspan="3">(повне найменування та призначення об'єкта)</td>         </tr>
+        <tr> <td align="center" border-bottom="default" bind="" colspan="3"/>         </tr>
+        <tr> <td align="center" colspan="3">(найменування заводу-виготовлювача)</td>         </tr>
+        <tr> <td align="center" border-bottom="default" bind="" colspan="3"/>         </tr>
+        <tr> <td align="center" colspan="3">(модель, тип, марка)</td>         </tr>
+        <tr> <td></td>  </tr>
+        <tr> <td></td>  </tr>
 
         </tbody>
 
       </table>
+      <!--  Шапка 4  -->      
 
-            <!--  Таблица 1  -->
+      <!--  Таблица 1  -->
       <table>
         <columns>
           <column width="10mm"/>
@@ -152,8 +202,8 @@
           </tr>
 
           <tr align="center" >
-            <td colspan="1" wrap="1" border="default" style="small">на повне\n відновлення</td>
-            <td colspan="1" wrap="1" border="default" style="small">на капітальний\n ремонт</td>
+            <td colspan="1" wrap="1" border="default" style="small">на повне\nвідновлення</td>
+            <td colspan="1" wrap="1" border="default" style="small">на капітальний\nремонт</td>
             <td colspan="1" border="default" style="small">дата</td>
             <td colspan="1" border="default" style="small">номер</td>
           </tr>
@@ -187,32 +237,32 @@
             <td colspan="1" border="default" style="small">29</td>
           </tr>
           <tr align="center" >
+            <td colspan="1" border="default" style="total" bind="mycompany">__\n____</td>
             <td colspan="1" border="default" style="small" bind=""></td>
             <td colspan="1" border="default" style="small" bind=""></td>
             <td colspan="1" border="default" style="small" bind=""></td>
             <td colspan="1" border="default" style="small" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
-            <td colspan="1" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
+            <td colspan="1" border="default" style="small" bind=""></td>
           </tr>
         </tbody>
 
@@ -224,24 +274,221 @@
   <!-- Оборотная сторона Типовой формы № ОЗ-6 -->
   <page margin="15;5;10;5" padding="2" orientation="portrait" caption="Зворотна сторона форми № ОЗ-6" flowpaginate="1">
     <section>
+        <!--  Шапка 2.1  --> 
       <table>
         <columns>
-          <column width="65mm"/>
-          <column width="*"/>
-          <column width="65mm"/>
-        </columns>
+          <column width="*"/>         
+        </columns>      
         <tbody>
-          <tr>
-            <td colspan="2"/>
-            <td style="bold">HHHHHHHHHHHHHHH</td>
-          </tr>
-          <tr>
-            <td colspan="2"/>
-            <td style="bold">УРА ПОЛУЧИЛОСЬ !!!!</td>
-          </tr>
+          <tr> <td align="right" colspan="1" style="bold">Зворотня сторона форми № ОЗ-6</td>                
+          </tr>        
+          <tr> <td></td> </tr>      
         </tbody>
       </table>
+      <!--  Шапка 2.1  --> 
+      
+        <!-- Таблица 2.1-->
+      <table>
+        <columns>
+          <column width="15mm"/>
+          <column width="14mm"/>
+          <column width="22mm"/>
+          <column width="15mm"/>
+          <column width="15mm"/>
+          <column width="14mm"/>
+          <column width="15mm"/>
+          <column width="17mm"/>
+          <column width="15mm"/>
+          <column width="14mm"/>
+          <column width="15mm"/>
+          <column width="*"/>
+        </columns>
+        <tbody>
+      <tr align="center" border="default">
+        <td colspan="4" wrap="1">Добудування, доустатковання\n модернізація, індексація</td>
+        <td colspan="8">Ремонт (бухгалтерський запис)</td>
+      </tr> 
+      
+
+      <tr align="center" border="default">
+        <td colspan="1">дата</td>
+        <td colspan="1">номер</td>
+        <td colspan="1" wrap="1">інвентарний\n номер</td>
+        <td colspan="1">сума</td>
+        <td colspan="1">дата</td>
+        <td colspan="1">номер</td>
+        <td colspan="1" wrap="1">інвентарний\n номер</td>
+        <td colspan="1">сума</td>
+        <td colspan="1">дата</td>
+        <td colspan="1">номер</td>
+        <td colspan="1" wrap="1">інвентарний\n номер</td>
+        <td colspan="1">сума</td>
+      </tr> 
+    
+    <tr align="center" border="default">
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+      </tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        </tbody>
+      </table>
+            <!-- Таблица 2.1-->
+    
+       <!--  Шапка 2.2  --> 
+         <table>
+        <columns>
+          <column width="*"/>         
+        </columns>      
+        <tbody>
+          <tr> <td align="center" colspan="1" style="bold">Коротка індивідуальна характеристика об'єкта</td>                
+          </tr>        
+          <tr> <td></td> </tr>      
+        </tbody>
+      </table>
+      <!--  Шапка 2.2  --> 
+      
+            <!-- Таблица 2.2-->
+      <table>
+        <columns>
+          <column width="64mm"/>
+          <column width="25mm"/>
+          <column width="25mm"/>
+          <column width="25mm"/>
+          <column width="25mm"/>
+          <column width="*"/>
+        </columns>
+        
+        <tbody>
+          
+      <tr align="center" border="default">
+        <td rowspan="2" wrap="1">Найменування конструктивних\nелементів та інших ознак,\nщо характеризують об'єкт</td>
+        <td colspan="5" wrap="1">Матеріали, розміри та інша відомість</td>
+      </tr> 
+      
+     <tr align="center" border="default">
+        <td colspan="1" wrap="1">основний\nобєкт</td>
+        <td colspan="4" wrap="1">найменування найважливіших прибудов обладнань\nта приладдя, що відноситься до основного об'єкта</td>
+      </tr> 
+
+
+    
+    <tr align="center" border="default">
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+      </tr>
+                  <tr> <td></td> </tr>  
+        </tbody>
+      </table>
+            <!-- Таблица 2.2-->
+      
+    
+    <!--  Шапка 2.3  --> 
+         <table>
+        <columns>
+          <column width="40"/>    
+          <column width="30"/>     
+          <column width="18"/>    
+          <column width="30"/> 
+          <column width="18"/>
+          <column width="*"/>         
+        </columns>      
+        <tbody>
+          <tr> <td align="left" colspan="1" style="normal">Картку заповнив</td>  
+               <td colspan="1" border-bottom="default"></td> 
+               <td colspan="1"></td> 
+               <td colspan="1" border-bottom="default"></td> 
+               <td colspan="1"></td> 
+               <td colspan="1" border-bottom="default"></td> 
+          </tr>    
+          <tr> <td colspan="1"></td>  
+               <td colspan="1" align="center" style="italic">посада</td> 
+               <td colspan="1"></td> 
+               <td colspan="1" align="center" style="italic">підпис</td> 
+               <td colspan="1"></td> 
+               <td colspan="1" align="center" style="italic">прізвище, ім'я, по батькові</td> 
+          </tr> 
+               <tr> <td align="left" colspan="2" style="normal">"_____"________________20____р.</td>    
+          </tr> 
+          <tr> <td></td> </tr> 
+          <tr> <td></td> </tr> 
+        </tbody>
+      </table>
+      <!--  Шапка 2.3  --> 
+       
+      
+       <!--  Шапка 2.4  -->
+      <table>
+        <columns>
+          <column width="40mm"/> 
+          <column width="*"/>    
+          <column width="40mm"/>
+        </columns>
+        
+        <tbody>
+        <tr> <td colspan="1"> </td> <td align="center" border-bottom="default" bind="" colspan="3"/> <td colspan="1"> </td> </tr>
+        <tr> <td colspan="1"> </td> <td colspan="1" align="center" style="italic">найменування ккласифікаційної групи</td>  </tr>
+        <tr> <td></td>  </tr>
+        <tr> <td></td>  </tr>
+
+        </tbody>
+
+      </table>
+      <!--  Шапка 2.4  -->  
+      
+        
+          
+    
+  <!-- Таблица 2.3-->
+      <table>
+        <columns>
+          <column width="40mm"/>
+          <column width="40mm"/>
+          <column width="60mm"/>
+          <column width="*"/>
+        </columns>
+        
+        <tbody>
+          
+      <tr align="center" border="default">
+        <td colspan="2" wrap="1">Номер</td>
+              <td rowspan="2" wrap="1">Найменування об'єкта</td>
+              <td rowspan="2" wrap="1">Відмітка про вибуття</td>
+      </tr> 
+      
+     <tr align="center" border="default">
+        <td colspan="1" wrap="1">картки</td>
+        <td colspan="1" wrap="1">інвентарний</td>
+      </tr> 
+    
+    <tr align="center" border="default">
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+        <td colspan="1" bind=""></td>
+      </tr>
+                  <tr> <td></td> </tr>  
+        </tbody>
+      </table>
+            <!-- Таблица 2.3-->
+  
+    
     </section>
+  
   </page>
   
 </form>
